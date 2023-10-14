@@ -21,11 +21,13 @@ import {EditFiliereComponent} from "./components/edit/edit-filiere/edit-filiere.
 import {EditClasseComponent} from "./components/edit/edit-classe/edit-classe.component";
 import { EditProfileComponent } from './components/edit/edit-profile/edit-profile.component';
 import { NonDisponibleComponent } from './components/gestion/non-disponible/non-disponible.component';
+import {GestionEtudiantComponent} from "./components/gestion/gestion-etudiant/gestion-etudiant.component";
 const routes: Routes = [
   { path :'' , component: HomeComponent},
   { path :'index' , component: IndexPageComponent},
     { path :'home' , component: HomeComponent},
     { path :'profs' , component: GestionProfComponent},
+  { path :'etud' , component: GestionEtudiantComponent},
     { path :'profs/add' , component: AddNewProfComponent},
     { path :'filieres' , component: GestionFiliereComponent},
     { path :'filieres/add' , component: AddNewFiliereComponent},

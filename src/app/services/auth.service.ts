@@ -11,6 +11,7 @@ export class AuthService {
   public loggedIn: boolean = false;
   public isAdmin: boolean = false;
   public isProf: boolean = false;
+  public isEtud: boolean = false;
   public name: string = "";
   public token: string = "";
   public id: number = 0;

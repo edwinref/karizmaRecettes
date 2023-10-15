@@ -32,7 +32,7 @@ export class SidebarComponent implements OnInit{
     icon: "fas fa-chalkboard-teacher"
   },
     {
-      link: "/etud",
+      link: "/etudiant",
       title: "Etudiants",
       icon: "fas fa-chalkboard-teacher"
     },

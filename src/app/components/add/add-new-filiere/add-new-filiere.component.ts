@@ -14,36 +14,22 @@ import { DepartmentService } from '../../../services/department.service';
 })
 export class AddNewFiliereComponent implements OnInit {
   newFiliereFormGroup!: FormGroup;
-  departements: Departement[] = [];
-
   constructor(
     private fb: FormBuilder,
     private filiereService: FiliereService,
-    private departementService: DepartmentService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
     this.newFiliereFormGroup = this.fb.group({
-      libelle: [null, Validators.required],
-      nombreSem: [null, Validators.required],
-      chefFiliere: [null, Validators.required],
-      departement: [null, Validators.required],
+      libelle: this.fb.control(null, [Validators.required]),
+      nombreSem: this.fb.control(null, [Validators.required]),
+      chefFiliere: this.fb.control(null, [Validators.required]),
+      departement: this.fb.control(null, [Validators.required])
     });
-
-    this.getDepartements();
   }
 
-  getDepartements() {
-    this.departementService.getDepartements().subscribe(
-      (data: Departement[]) => {
-        this.departements = data;
-      },
-      (error: any) => {
-        console.log(error);
-      }
-    );
-  }
+
 
   handleAddFiliere() {
     if (this.newFiliereFormGroup.valid) {

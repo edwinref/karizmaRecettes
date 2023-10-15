@@ -11,51 +11,51 @@ export class SidebarComponent implements OnInit{
    sidebarItems:any[] = [];
 
   sidebarAdminItems = [
+
   {
     link: "/home",
     title: "Home",
     icon: "fas fa-home"
   },
-  {
+  /*{
     link: "/emploitemps",
     title: "Emploi du temps",
     icon: "fas fa-clipboard-list"
-  },
+  },*/
+    {
+      link: "/salles",
+      title: "Salles",
+      icon: "fas fa-school"
+    } ,
+    {
+      link: "/filieres",
+      title: "Filières",
+      icon: "fas fa-user-graduate"
+    },
+
+    {
+      link: "/profs",
+      title: "Professeurs",
+      icon: "fas fa-chalkboard-teacher"
+    },
+    {
+      link: "/etudiant",
+      title: "Etudiants",
+      icon: "fas fa-book-reader"
+    },
   {
     link: "/classes",
     title: "Classes",
     icon: "fas fa-graduation-cap"
   },
-  {
-    link: "/profs",
-    title: "Professeurs",
-    icon: "fas fa-chalkboard-teacher"
-  },
-    {
-      link: "/etudiant",
-      title: "Etudiants",
-      icon: "fas fa-chalkboard-teacher"
-    },
-  {
-    link: "/departements",
-    title: "Départments",
-    icon: "fas fa-building"
-  },
-  {
-    link: "/filieres",
-    title: "Filières",
-    icon: "fas fa-book-reader"
-  },
-  {
-    link: "/salles",
-    title: "Salles",
-    icon: "fas fa-clipboard"
-  },
     {
       link: "/coursmodules",
-      title: "Modules",
-      icon: "fas fa-home"
+      title: "Cours Model",
+      icon: "fas fa-book-open"
     },
+
+
+
 ];
 
 sidebarProfItems = [
@@ -71,30 +71,11 @@ sidebarProfItems = [
   },
   {
     link: "/nonDesponibles",
-    title: "Non Disponibilités",
+    title: "Constraintes",
     icon: "fas fa-clipboard-list"
   },
 
 ]
-
-  sidebarEtudeItems = [
-    {
-      link: "/home",
-      title: "Home",
-      icon: "fas fa-home"
-    },
-    {
-      link: "/emploitemps",
-      title: "Emploi du temps",
-      icon: "fas fa-clipboard-list"
-    },
-    {
-      link: "/contraints",
-      title: "contraints",
-      icon: "fas fa-clipboard-list"
-    },
-
-  ]
   constructor(private cookieService: CookieService) { }
 
   handleChangeBars(index: number): void {
@@ -104,10 +85,7 @@ sidebarProfItems = [
 
     if(this.cookieService.get('role') == "Administrateur"){
      this.sidebarItems= this.sidebarAdminItems;
-    }else if(this.cookieService.get('role') == "Etudiant"){
-      this.sidebarItems = this.sidebarEtudeItems;
-    }
-    else {
+    }else {
      this.sidebarItems= this.sidebarProfItems;
     }
 

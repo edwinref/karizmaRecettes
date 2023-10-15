@@ -16,9 +16,9 @@ export class StatistiqueComponent  implements OnInit
   nombreClasses:number=0;
   nombreSalles:number=0;
 
-  
+
     constructor(private dpService:DepartmentService,private prfService:ProfServiceService,private clsService:ClasseService,private salleService: SalleService) { }
-  
+
     ngOnInit(): void {
       this.getNbDepartements();
       this.getNbProfs();
@@ -39,6 +39,13 @@ export class StatistiqueComponent  implements OnInit
       }
     );
     }
+  getNbEtudiants() {
+    this.prfService.getProfs(0,6).subscribe(
+      (data) => {
+        this.nombreProfs= data.totalElements;
+      }
+    );
+  }
     getNbClasses() {
       this.clsService.getClasses(0,6).subscribe(
       (data) => {

@@ -20,6 +20,16 @@
             </div>
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
+                <label>Bloc<span class="login-danger">*</span></label>
+                <select class="form-control" formControlName="bloc">
+                  <option value="A">A</option>
+                  <option value="B">B</option>
+                  <option value="C">C</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-sm-4">
+              <div class="form-group local-forms">
                 <label>numéro <span class="login-danger">*</span></label>
                 <input
                   class="form-control"
@@ -41,12 +51,11 @@
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
                 <label>type <span class="login-danger">*</span></label>
-
                 <select class="form-control select" formControlName="typeSalle">
-                  <option value="miniAmphi">miniAmphi</option>
-                  <option value="small">small</option>
-                  <option value="big">big</option>
+                  <option value="Simple">Simple</option>
                   <option value="Tps">Tps</option>
+                  <option value="Amphi">Amphi</option>
+                  <option value="miniAmphi">Mini Amphi</option>
                 </select>
               </div>
             </div>

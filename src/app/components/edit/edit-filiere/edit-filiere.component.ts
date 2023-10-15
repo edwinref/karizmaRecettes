@@ -4,6 +4,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import Swal from "sweetalert2";
 import {FiliereService} from "../../../services/filiere.service";
 import {Filiere} from "../../../models/filieres.models";
+import {Departement} from "../../../models/departement.models";
+import {DepartmentService} from "../../../services/department.service";
 @Component({
   selector: 'app-edit-filiere',
   templateUrl: './edit-filiere.component.html',
@@ -16,8 +18,10 @@ export class EditFiliereComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
+    private departementService: DepartmentService,
     private dpService: FiliereService
-  ) {
+
+) {
     this.filiere = this.router.getCurrentNavigation()?.extras.state as Filiere;
   }
   ngOnInit(): void {
@@ -28,6 +32,7 @@ export class EditFiliereComponent implements OnInit {
       departement: ['']
     });
     this.setFormValues();
+
   }
   setFormValues() {
     if (this.filiere) {
@@ -35,10 +40,13 @@ export class EditFiliereComponent implements OnInit {
         libelle: this.filiere.libelle,
         nombreSem: this.filiere.nombreSem,
         chefFiliere: this.filiere.chefFiliere,
-        departement: this.filiere.departement.libelle
+        departement: this.filiere.departement
       });
     }
   }
+
+
+
   handleUpdateFiliere() {
 
     if (this.editFiliereFormGroup.valid && this.filiere) {

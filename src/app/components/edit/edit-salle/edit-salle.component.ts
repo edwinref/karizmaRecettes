@@ -24,6 +24,7 @@ export class EditSalleComponent {
 
   ngOnInit(): void {
     this.editSalleFormGroup = this.fb.group({
+      bloc: [''],
       capacite: [''],
       numSalle: [''],
       typeSalle: [''],
@@ -33,6 +34,7 @@ export class EditSalleComponent {
   setFormValues() {
     if (this.salle) {
       this.editSalleFormGroup.patchValue({
+        bloc: this.salle.bloc,
         capacite: this.salle.capacite,
         numSalle: this.salle.numSalle,
         typeSalle: this.salle.typeSalle,
@@ -58,5 +60,5 @@ export class EditSalleComponent {
         });
     }
     }
-  
+
 }

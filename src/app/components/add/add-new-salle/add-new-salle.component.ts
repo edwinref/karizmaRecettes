@@ -18,6 +18,7 @@ export class AddNewSalleComponent {
 
   ngOnInit(): void {
     this.newSalleFormGroup = this.fb.group({
+      bloc: this.fb.control(null, [Validators.required]),
       capacite: this.fb.control(null, [Validators.required]),
       typeSalle: this.fb.control(null, [Validators.required]),
       numSalle: this.fb.control(null, [Validators.required])

@@ -31,6 +31,11 @@ export class SidebarComponent implements OnInit{
     title: "Professeurs",
     icon: "fas fa-chalkboard-teacher"
   },
+    {
+      link: "/etud",
+      title: "Etudiants",
+      icon: "fas fa-chalkboard-teacher"
+    },
   {
     link: "/departements",
     title: "Départments",
@@ -71,6 +76,25 @@ sidebarProfItems = [
   },
 
 ]
+
+  sidebarEtudeItems = [
+    {
+      link: "/home",
+      title: "Home",
+      icon: "fas fa-home"
+    },
+    {
+      link: "/emploitemps",
+      title: "Emploi du temps",
+      icon: "fas fa-clipboard-list"
+    },
+    {
+      link: "/contraints",
+      title: "contraints",
+      icon: "fas fa-clipboard-list"
+    },
+
+  ]
   constructor(private cookieService: CookieService) { }
 
   handleChangeBars(index: number): void {
@@ -80,7 +104,10 @@ sidebarProfItems = [
 
     if(this.cookieService.get('role') == "Administrateur"){
      this.sidebarItems= this.sidebarAdminItems;
-    }else {
+    }else if(this.cookieService.get('role') == "Etudiant"){
+      this.sidebarItems = this.sidebarEtudeItems;
+    }
+    else {
      this.sidebarItems= this.sidebarProfItems;
     }
 

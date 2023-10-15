@@ -1,0 +1,95 @@
+<app-page-header
+  [link]="'etud'"
+  [prev]="'Etudiants'"
+  [current]="'Home'"
+></app-page-header>
+
+<div class="student-group-form">
+    <!-- Search form -->
+    <div class="row">
+      <div class="col-lg-3 col-md-6">
+        <div class="form-group">
+          <label>checher les étudiant de la Classe : </label>
+          <select class="col-md-12 form-control" [(ngModel)]="selectedClasse" name="classe" required (ngModelChange)="searchEtud(selectedClasse)">
+            <option [ngValue]="null">Select a classe</option>
+            <option [ngValue]="classe" *ngFor="let classe of classes">
+              {{classe.libelle}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card card-table">
+      <div class="card-body">
+        <div class="page-header">
+          <div class="row align-items-center">
+            <div class="col">
+              <h3 class="page-title">Etudiants</h3>
+            </div>
+            <div class="col-auto text-end float-end ms-auto download-grp">
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <table
+          class="table border-0 star-student table-hover table-center mb-0 datatable table-striped"
+        >
+          <thead class="student-thread">
+          <tr>
+            <th>
+              <div class="form-check check-tables">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value="something"
+                />
+              </div>
+            </th>
+            <th>CNE</th>
+            <th>Prénom</th>
+            <th>Nom</th>
+            <th>Téléphone</th>
+            <th>Email</th>
+            <th>classe</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let etud of etuds">
+            <td>
+              <div class="form-check check-tables">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value="something"
+                />
+              </div>
+            </td>
+            <td>{{ etud.cne }}</td>
+            <td>{{ etud.prenom }}</td>
+            <td>{{ etud.nom }}</td>
+            <td>{{ etud.email }}</td>
+            <td>{{ etud.classe.libelle }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <app-add-new-etudiant (closeModalEvent)="closeModal()"></app-add-new-etudiant>
+    </div>
+  </div>
+</div>

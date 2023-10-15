@@ -1,0 +1,140 @@
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card comman-shadow">
+      <div class="card-body">
+        <form #etudiant="ngForm" (ngSubmit)="addEtudiants()">
+          <div class="row">
+            <div class="col-12">
+              <h5 class="form-title student-info">
+                Informations sur les etudiant<span
+              ><a href="javascript:;"
+              ><i class="feather-more-vertical"></i></a
+              ></span>
+              </h5>
+            </div>
+            <div class="col-12">
+              <div class="form-group local-forms">
+                <label>Classe <span class="login-danger">*</span></label>
+                <select class="col-md-12 form-control" ngModel name="classe" required>
+                  <option></option>
+                  <option [ngValue]="classe" *ngFor="let classe of classes">
+                    {{classe.libelle}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-sm-4">
+              <div class="form-group local-forms">
+                <label>Prénom <span class="login-danger">*</span></label>
+                <input
+                  class="form-control"
+                  type="text"
+                  ngModel
+                  name="prenom"
+                />
+              </div>
+            </div>
+            <div class="col-12 col-sm-4">
+              <div class="form-group local-forms">
+                <label>Nom <span class="login-danger">*</span></label>
+                <input class="form-control" type="text" ngModel
+                       name="nom"/>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-4">
+              <div class="form-group local-forms">
+                <label>CNE <span class="login-danger">*</span></label>
+                <input class="form-control" type="text" ngModel
+                       name="cne" />
+              </div>
+            </div>
+            <div class="col-12 col-sm-4">
+              <div class="form-group local-forms">
+                <label>E-Mail <span class="login-danger">*</span></label>
+                <input
+                  class="form-control"
+                  type="email"
+                  ngModel
+                  name="email"
+                />
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-4">
+              <div class="form-group local-forms">
+                <label
+                >Nom d'utilisateur <span class="login-danger">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  ngModel
+                  name="login"
+                />
+              </div>
+            </div>
+            <div class="col-12 col-sm-4">
+              <div class="form-group local-forms">
+                <label>Mot de passe <span class="login-danger">*</span></label>
+                <input
+                  type="password"
+                  class="form-control"
+                  ngModel
+                  name="password"
+                />
+              </div>
+            </div>
+
+            <div
+              class="col-12 d-flex align-items-center justify-content-center"
+            >
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group pull-right">
+                    <button type="button" (click)="addEEE(etudiant)" class="btn btn-block btn-success">
+                      +
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              Les critères qui seront créer :
+              <div class="row">
+                <div class="col-md-12">
+                  <table class="table table-bordered">
+                    <thead class="thead-default">
+                    <th class="text-center">Etudiant</th>
+                    <th class="text-center">classe</th>
+                    <th>X</th>
+                    <tbody>
+                    <tr *ngFor="let etud of etuds">
+                      <td class="text-center pointer">{{etud.nom}} {{etud.prenom}}</td>
+                      <td class="text-center pointer">{{etud.classe.libelle}}</td>
+                      <td>
+                        <input type="button" (click)="supprimerEtud(etud)"
+                               class="btn btn-block btn-danger" value="X">
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group pull-right">
+                    <button type="submit" [disabled]="etuds ==[]" class="btn  btn-success">
+                      Enregistrer
+                      <i [hidden]="true" class="fa fa-spinner fa-spin fa-2x fa-fw pull-right"></i>
+                      <span class="sr-only">Loading...</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -53,6 +53,8 @@ export class LoginComponent implements OnInit {
         this.authService.loggedIn = response.authenticated;
         this.authService.isAdmin = response.admin;
         this.authService.isProf = response.enseignant;
+        this.authService.isProf = response.enseignant;
+        this.authService.isEtud = response.etudiant;
         this.authService.name = response.nom + " " + response.prenom;
         this.authService.token = response.token;
         this.authService.id = response.id;
@@ -61,6 +63,9 @@ export class LoginComponent implements OnInit {
         this.cookieService.set('username', this.authService.name);
         this.cookieService.set('userId', this.authService.id.toString());
         let role = response.admin ? 'Administrateur' : 'Ensignant';
+        if(response.etudiant){
+          role = 'Etudiant'
+        }
         this.cookieService.set('role', role);
         // refresh page
         window.location.reload();

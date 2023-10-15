@@ -31,11 +31,11 @@ export class SidebarComponent implements OnInit{
     title: "Professeurs",
     icon: "fas fa-chalkboard-teacher"
   },
-  {
+ /* {
     link: "/departements",
     title: "Départments",
     icon: "fas fa-building"
-  },
+  },*/
   {
     link: "/filieres",
     title: "Filières",

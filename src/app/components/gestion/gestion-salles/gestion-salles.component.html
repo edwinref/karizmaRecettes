@@ -11,10 +11,10 @@
         <div class="form-group local-forms angle-icon">
           <select class="form-control select" formControlName="keyword">
             <option value="">...</option>
-            <option value="miniAmphi">miniAmphi</option>
-            <option value="small">small</option>
-            <option value="big">big</option>
+            <option value="Simple">Simple</option>
             <option value="Tps">Tps</option>
+            <option value="Amphi">Amphi</option>
+            <option value="miniAmphi">miniAmphi</option>
           </select>
         </div>
       </div>
@@ -60,6 +60,7 @@
                 </div>
               </th>
               <th>ID</th>
+              <th>bloc</th>
               <th>numéro</th>
               <th>capacité</th>
               <th>type</th>
@@ -79,6 +80,7 @@
                 </div>
               </td>
               <td>{{ salle.id }}</td>
+              <td>{{ salle.bloc }}</td>
               <td>{{ salle.numSalle }}</td>
               <td>{{ salle.capacite }}</td>
               <td>{{ salle.typeSalle }}</td>

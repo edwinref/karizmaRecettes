@@ -91,41 +91,41 @@
               <td>{{ filiere.libelle}}</td>
               <td>{{ filiere.nombreSem}}</td>
               <td>{{ filiere.chefFiliere}}</td>
-              <td>{{ filiere.departement.libelle}}</td>
-              <td class="text-end">
-                <div class="actions">
-                  <a
-                    class="btn btn-sm bg-success-light me-2"
-                    (click)="handleEditeFiliere(filiere)"
-                  > <i class="fas fa-edit"></i>
-                  </a>
-                  <a
-                    (click)="handleDeleteFiliere(filiere)"
-                    class="btn btn-sm bg-danger-light"
-                  >
-                    <i class="fas fa-trash"></i>
-                  </a>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <ul class="pagination justify-content-end mt-4">
-          <li class="page-item " [ngClass]="{ disabled: currentPage === 0 }">
-            <a class="page-link" tabindex="-1" (click)="goToPreviousSet()">Précédent </a>
-          </li>
-          <li
-            class="page-item"
-            *ngFor="let page of displayedPages"
-            [class.selected]="currentPage === page"
-          >
-            <a class="page-link" (click)="gotoPage(page)">{{ page + 1 }}</a>
-          </li>
-          <li
-            class="page-item"
-            [ngClass]="{ disabled: currentPage >= totalPages - 1 }"
-          >
-            <!-- Add the following code to disable the "Suivant" button when there are no more pages to show -->
+               <td>{{ filiere.departement}}</td>
+               <td class="text-end">
+                 <div class="actions">
+                   <a
+                     class="btn btn-sm bg-success-light me-2"
+                     (click)="handleEditeFiliere(filiere)"
+                   > <i class="fas fa-edit"></i>
+                   </a>
+                   <a
+                     (click)="handleDeleteFiliere(filiere)"
+                     class="btn btn-sm bg-danger-light"
+                   >
+                     <i class="fas fa-trash"></i>
+                   </a>
+                 </div>
+               </td>
+             </tr>
+           </tbody>
+         </table>
+         <ul class="pagination justify-content-end mt-4">
+           <li class="page-item " [ngClass]="{ disabled: currentPage === 0 }">
+             <a class="page-link" tabindex="-1" (click)="goToPreviousSet()">Précédent </a>
+           </li>
+           <li
+             class="page-item"
+             *ngFor="let page of displayedPages"
+             [class.selected]="currentPage === page"
+           >
+             <a class="page-link" (click)="gotoPage(page)">{{ page + 1 }}</a>
+           </li>
+           <li
+             class="page-item"
+             [ngClass]="{ disabled: currentPage >= totalPages - 1 }"
+           >
+             <!-- Add the following code to disable the "Suivant" button when there are no more pages to show -->
             <button
               class="page-link"
               [disabled]="currentPage >= totalPages - 1"

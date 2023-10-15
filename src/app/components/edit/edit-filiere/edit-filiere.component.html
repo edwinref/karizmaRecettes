@@ -38,7 +38,9 @@
                 />
               </div>
             </div>
+
             <div class="col-12 col-sm-4">
+
               <div class="form-group local-forms">
                 <label
                 >Chef du Filiére<span class="login-danger">*</span></label
@@ -50,18 +52,15 @@
                 />
               </div>
 
-              <div class="col-12 col-sm-4">
-                <div class="form-group local-forms">
-                  <label
-                  >Département<span class="login-danger">*</span></label
-                  >
-                  <input
-                    class="form-control"
-                    type="text"
-                    formControlName="departement"
-                  />
-                </div>
+              <div class="form-group local-forms">
+                <label>Département<span class="login-danger">*</span></label>
+                <select class="form-control" formControlName="departement">
+                  <option value="TRI">TRI</option>
+                  <option value="STIN">STIN</option>
+                </select>
               </div>
+
+
             </div>
             <div
               class="col-12 d-flex align-items-center justify-content-center"

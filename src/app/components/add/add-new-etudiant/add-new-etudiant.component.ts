@@ -38,7 +38,7 @@ export class AddNewEtudiantComponent {
   }
 
   private getClasses() {
-    this.classeService.getClassess().subscribe(data => {
+    this.classeService.getClasses1().subscribe(data => {
       this.classes = data;
       console.log(this.classes)
     });

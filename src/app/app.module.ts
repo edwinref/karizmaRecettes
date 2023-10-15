@@ -18,7 +18,7 @@ import { GestionClasseComponent } from './components/gestion/gestion-classe/gest
 import { AddNewClasseComponent } from './components/add/add-new-classe/add-new-classe.component';
 import { GestionSallesComponent } from './components/gestion/gestion-salles/gestion-salles.component';
 import { AddNewSalleComponent } from './components/add/add-new-salle/add-new-salle.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TimetableComponent } from './components/timetable/timetable.component';
 import { EditProfComponent } from './components/edit/edit-prof/edit-prof.component';
@@ -36,6 +36,9 @@ import { ProfileComponent } from './components/widgets/profile/profile.component
 import { EditProfileComponent } from './components/edit/edit-profile/edit-profile.component';
 import { NonDisponibleComponent } from './components/gestion/non-disponible/non-disponible.component';
 import {AddNewModuleComponent} from "./components/add/add-new-coursmodel/add-new-coursmodel.component";
+
+import {AddNewEtudiantComponent} from "./components/add/add-new-etudiant/add-new-etudiant.component";
+import {GestionEtudiantComponent} from "./components/gestion/gestion-etudiant/gestion-etudiant.component";
 import {GestionModuleComponent} from "./components/gestion/gestion-coursmodules/gestion-coursmodules.component";
 import {EditModuleComponent} from "./components/edit/edit-coursmodule/edit-coursmodules.component";
 
@@ -74,15 +77,18 @@ import {EditModuleComponent} from "./components/edit/edit-coursmodule/edit-cours
     NonDisponibleComponent,
     AddNewModuleComponent,
     GestionModuleComponent,
-    EditModuleComponent
+    EditModuleComponent,
+    AddNewEtudiantComponent,
+    GestionEtudiantComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-     ReactiveFormsModule,
-     BrowserAnimationsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

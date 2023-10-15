@@ -18,6 +18,9 @@ export class ClasseService {
   public getClasses1(): Observable<Classe[]> {
     return this.http.get<Classe[]>(environment.backendHost + "/classes");
   }
+  public getClassess(): Observable<Classe[]> {
+    return this.http.get<Classe[]>(environment.backendHost + "/classes/all");
+  }
   public searchClassesSem(keyword : string, sem:number,page: number, size: number):Observable<PageClasse>{
     return this.http.get<PageClasse>(environment.backendHost+"/classes/searchSem?keyword="+keyword+"&page=" + page + "&size=" + size+"&sem="+sem)
   }

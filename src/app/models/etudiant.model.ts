@@ -1,16 +1,15 @@
+import {Classe} from "./classes.models";
 
-export class Etudiant {
-  id:         any;
-  nom:        any;
-  prenom:     any;
-  cne:        any;
-  email:      any;
-  login:      any;
-  password:   any;
-  classe: any;
+export interface Etudiant {
+  id:         number;
+  civilite: string;
+  nom:        string;
+  prenom:     string;
+  cne:        string;
+  email:      string;
+  login:      string;
+  password:   string;
+  classe: Classe;
 
-  constructor(id: any) {
-  if (null != id)
-    this.id = id;
-}
+
 }

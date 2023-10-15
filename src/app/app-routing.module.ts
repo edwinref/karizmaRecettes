@@ -25,6 +25,7 @@ import {AddNewModuleComponent} from "./components/add/add-new-coursmodel/add-new
 import {GestionModuleComponent} from "./components/gestion/gestion-coursmodules/gestion-coursmodules.component";
 import {EditModuleComponent} from "./components/edit/edit-coursmodule/edit-coursmodules.component";
 import {GestionEtudiantComponent} from "./components/gestion/gestion-etudiant/gestion-etudiant.component";
+import {AddNewEtudiantComponent} from "./components/add/add-new-etudiant/add-new-etudiant.component";
 
 const routes: Routes = [
   { path :'' , component: HomeComponent},
@@ -51,9 +52,11 @@ const routes: Routes = [
     { path :'coursmodules' , component: GestionModuleComponent},
   { path :'coursmodules/add' , component: AddNewModuleComponent},
   { path :'coursmodules/edit' , component: EditModuleComponent},
-  { path :'etud' , component: GestionEtudiantComponent},
+  { path :'etudiant' , component: GestionEtudiantComponent},
+  { path :'etudiant/add' , component: AddNewEtudiantComponent},
 
-    // not-found
+
+  // not-found
     { path :'**' , component: NotFoundComponent},
 
 ];

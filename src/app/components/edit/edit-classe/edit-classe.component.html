@@ -42,14 +42,11 @@
             </div>
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
-                <label
-                >Filiére<span class="login-danger">*</span></label
-                >
-                <input
-                  class="form-control"
-                  type="text"
-                  formControlName="filiere"
-                />
+                <label>filière<span class="login-danger">*</span></label>
+                <select class="form-control" formControlName="filiere">
+                  <option value="" disabled selected>Choisir une filière</option>
+                  <option *ngFor="let filiere of filieres" [value]="filiere.id">{{ filiere.libelle }}</option>
+                </select>
               </div>
             </div>
             <div

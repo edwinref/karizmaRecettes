@@ -45,7 +45,12 @@ export class SidebarComponent implements OnInit{
     link: "/salles",
     title: "Salles",
     icon: "fas fa-clipboard"
-  }
+  },
+    {
+      link: "/coursmodules",
+      title: "Modules",
+      icon: "fas fa-home"
+    },
 ];
 
 sidebarProfItems = [

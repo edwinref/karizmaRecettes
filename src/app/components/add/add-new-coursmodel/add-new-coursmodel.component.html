@@ -1,0 +1,109 @@
+<app-page-header
+  [link]="'coursmodules'"
+  [prev]="'Coursomdules'"
+  [current]="'Add a Module'"
+></app-page-header>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card comman-shadow">
+      <div class="card-body">
+        <form [formGroup]="newModuleFormGroup" (ngSubmit)="handleAddModule()">
+          <div class="row">
+            <div class="col-12">
+              <h5 class="form-title student-info">
+                Module Information<span
+              ><a href="javascript:;"
+              ><i class="feather-more-vertical"></i></a
+              ></span>
+              </h5>
+            </div>
+            <div class="col-12 col-sm-4">
+              <div class="form-group local-forms">
+                <label>Libellé <span class="login-danger">*</span></label>
+                <input
+                  class="form-control"
+                  type="text"
+                  formControlName="libelle"
+                />
+              </div>
+            </div>
+            <div class="col-12 col-sm-4">
+              <div class="form-group local-forms">
+                <label>Volume Horaire Onsite <span class="login-danger">*</span></label>
+                <input class="form-control" type="text" formControlName="volumeHoraireOnsite" />
+              </div>
+            </div>
+            <div class="col-12 col-sm-4">
+              <div class="form-group local-forms angle-icon">
+                <label>Volume Horaire Remote <span class="login-danger">*</span></label>
+                <input class="form-control" type="text" formControlName="volumeHoraireOnRemote" />
+              </div>
+            </div>
+            <div class="col-12 col-sm-4">
+              <div class="form-group local-forms">
+                <label>Nombre TD <span class="login-danger">*</span></label>
+                <input
+                  class="form-control"
+                  type="text"
+                  formControlName="nbrTD"
+                />
+              </div>
+            </div>
+            <div class="col-12 col-sm-4">
+              <div class="form-group local-forms">
+                <label>Nombre TP <span class="login-danger">*</span></label>
+                <input class="form-control" type="text" formControlName="nbrTP" />
+              </div>
+            </div>
+            <div class="col-12 col-sm-4">
+              <div class="form-group local-forms">
+                <label>Nombre d'Évaluation <span class="login-danger">*</span></label>
+                <input
+                  class="form-control"
+                  type="text"
+                  formControlName="nbrEvaluation"
+                />
+              </div>
+            </div>
+            <div class="col-12 col-sm-4">
+              <div class="form-group local-forms">
+                <label>Est Séparé <span class="login-danger">*</span></label>
+                <select class="form-control select" formControlName="isSeperated">
+                  <option value="true">Oui</option>
+                  <option value="false">Non</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-sm-4">
+              <div class="form-group local-forms angle-icon">
+                <label>Est Mutualisé <span class="login-danger">*</span></label>
+                <select class="form-control select" formControlName="isMetuale">
+                  <option value="true">Oui</option>
+                  <option value="false">Non</option>
+                </select>
+              </div>
+            </div>
+            <!-- Assuming you have a form control for selecting a Classe -->
+            <div class="col-12 col-sm-4">
+              <div class="form-group local-forms">
+                <label>Classe <span class="login-danger">*</span></label>
+                <select class="form-control select" formControlName="classe">
+                  <option value="" disabled selected>Choisir une classe</option>
+                  <option *ngFor="let classe of classe" [value]="classe.id">{{ classe.libelle }}</option>
+                  <!-- Add more class options as needed -->
+                </select>
+              </div>
+            </div>
+
+            <div class="col-12 d-flex align-items-center justify-content-center">
+              <div class="student-submit">
+                <button type="submit" class="btn btn-primary">Confirm</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

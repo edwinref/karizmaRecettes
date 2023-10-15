@@ -35,6 +35,9 @@ import { LoginComponent } from './components/widgets/login/login.component';
 import { ProfileComponent } from './components/widgets/profile/profile.component';
 import { EditProfileComponent } from './components/edit/edit-profile/edit-profile.component';
 import { NonDisponibleComponent } from './components/gestion/non-disponible/non-disponible.component';
+import {AddNewModuleComponent} from "./components/add/add-new-coursmodel/add-new-coursmodel.component";
+import {GestionModuleComponent} from "./components/gestion/gestion-coursmodules/gestion-coursmodules.component";
+import {EditModuleComponent} from "./components/edit/edit-coursmodule/edit-coursmodules.component";
 
 @NgModule({
   declarations: [
@@ -68,7 +71,10 @@ import { NonDisponibleComponent } from './components/gestion/non-disponible/non-
     LoginComponent,
     ProfileComponent,
     EditProfileComponent,
-    NonDisponibleComponent
+    NonDisponibleComponent,
+    AddNewModuleComponent,
+    GestionModuleComponent,
+    EditModuleComponent
   ],
   imports: [
     BrowserModule,

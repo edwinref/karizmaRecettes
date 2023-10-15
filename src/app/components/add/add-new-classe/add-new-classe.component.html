@@ -45,8 +45,9 @@
                 <label>filière<span class="login-danger">*</span></label>
                 <select class="form-control" formControlName="filiere">
                   <option value="" disabled selected>Choisir une filière</option>
-                  <option *ngFor="let libelle of filieres" [value]="libelle">{{ libelle }}</option>
+                  <option *ngFor="let filiere of filieres" [value]="filiere.id">{{ filiere.libelle }}</option>
                 </select>
+
               </div>
             </div>
             <div class="col-12 d-flex align-items-center justify-content-center">

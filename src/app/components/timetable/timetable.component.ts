@@ -36,13 +36,13 @@ export class TimetableComponent implements OnInit {
 
   }
   ngOnInit() {
-    this.prof = (this.cookieService.get('role') == 'Ensignant')? true : false; 
+    this.prof = (this.cookieService.get('role') == 'Ensignant')? true : false;
     if(this.prof){
        this.ready = true;
       this.emploiService.getEmploiByProf(parseFloat(this.cookieService.get("userId"))).subscribe(
         data=>{
           console.log(data);
-          
+
           this.elementDeModule = data;
           console.log(data);
         }
@@ -54,7 +54,7 @@ export class TimetableComponent implements OnInit {
 
 
   }
-    
+
   }
 
 hasModule(days: string, timeSlot: string): boolean {
@@ -132,11 +132,11 @@ getModuleTeacher(days: string, timeSlot: string): string {
   return module ? module.enseignant.civilite+". "+module.enseignant.prenom+" "+module.enseignant.nom : '';
 
 }else{
-return module ? module.module.classe.libelle : '';
+return '2ITE';
 }
 }
   handleDownloadEmploi(){
-     
+
     Swal.fire({
       title: 'Voulez-vous vraiment Exporter les données ?',
       icon: 'info',
@@ -190,20 +190,20 @@ return module ? module.module.classe.libelle : '';
           }
         )
       }
-       
 
-       
+
+
 
 
         // show a loading spinner
-        
-        
 
-        
+
+
+
       }
     }
     )
-    
+
   }
   getDepartements(){
     this.departmentService
@@ -217,11 +217,11 @@ return module ? module.module.classe.libelle : '';
 handleDepartmentChange(target: EventTarget | null) {
   if (target instanceof HTMLSelectElement) {
     const departmentId = parseFloat(target.value);
-    
+
     console.log("departmentId");
-    
+
     console.log(departmentId);
-    
+
     this.selectedDepartement = this.departements.find(
       (department) => department.id === departmentId
     );
@@ -234,8 +234,8 @@ handleDepartmentChange(target: EventTarget | null) {
 handleFiliereChange(target: EventTarget | null) {
   if (target instanceof HTMLSelectElement) {
     const filiereId = parseFloat(target.value);
-    
-    
+
+
     this.selectedFiliere = this.filieres.find(
       (f) => f.id === filiereId
     );
@@ -247,8 +247,8 @@ handleFiliereChange(target: EventTarget | null) {
 handleSemsterChange(target: EventTarget | null) {
   if (target instanceof HTMLSelectElement) {
     const semsterId = parseFloat(target.value);
-    
-    
+
+
     this.selectedSemster = this.semsters.find(
       (s) => s.id === semsterId
     );
@@ -259,15 +259,15 @@ handleSemsterChange(target: EventTarget | null) {
 }
 
   getEmplois(semsterId: number, idFiliere: number , idDepartement: number ) {
- 
+
     this.classeService.searchClassesSem(this.selectedFiliere!.libelle,semsterId,0,1).subscribe(
       (data) => {
         let classeId =1;
         this.classe = data.content[0];
-    
+
         classeId = this.classe.id;
-     
-    
+
+
   this.emploiService.getEmploisByClasse(classeId).subscribe(
           data=>{
             this.elementDeModule = data;
@@ -276,7 +276,7 @@ handleSemsterChange(target: EventTarget | null) {
         )
       }
     );
-   
+
   }
 
 
@@ -288,8 +288,8 @@ handleSemsterChange(target: EventTarget | null) {
       }
     );
 
-    
-    
+
+
   }
   getSemsters(){
     if(this.selectedFiliere)
@@ -299,8 +299,8 @@ handleSemsterChange(target: EventTarget | null) {
       }
     );
 
-    
-    
+
+
   }
 
 

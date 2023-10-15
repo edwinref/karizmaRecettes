@@ -15,17 +15,25 @@ export class ClasseService {
    public getClasses(page: number, size: number): Observable<PageClasse> {
     return this.http.get<PageClasse>(environment.backendHost + "/classes?page=" + page + "&size=" + size);
   }
+  public getClasses1(): Observable<Classe[]> {
+    return this.http.get<Classe[]>(environment.backendHost + "/classes");
+  }
   public searchClassesSem(keyword : string, sem:number,page: number, size: number):Observable<PageClasse>{
     return this.http.get<PageClasse>(environment.backendHost+"/classes/searchSem?keyword="+keyword+"&page=" + page + "&size=" + size+"&sem="+sem)
   }
   public searchClasses(keyword : string, page: number, size: number):Observable<PageClasse>{
     return this.http.get<PageClasse>(environment.backendHost+"/classes/search?keyword="+keyword+"&page=" + page + "&size=" + size)
   }
-  public saveClasse(Classe: Classe):Observable<Classe>{
-    return this.http.post<Classe>(environment.backendHost+"/classes",Classe);
+  public saveClasse(Classe: Classe, filiereId: number): Observable<Classe> {
+    // Include filiereId as a query parameter in the request
+    return this.http.post<Classe>(
+      `${environment.backendHost}/classes?filiereId=${filiereId}`,
+      Classe
+    );
   }
-  public updateClasse(id: number,Classe: Classe):Observable<Classe>{
-    return this.http.put<Classe>(`${environment.backendHost}/classes/${id}`,Classe);
+
+  public updateClasse(id: number,Classe: Classe, filiereId: number):Observable<Classe>{
+    return this.http.put<Classe>(`${environment.backendHost}/classes/${id}?filiereId=${filiereId}`,Classe);
   }
   public getClasse(id: number):Observable<Classe>{
     return this.http.get<Classe>(environment.backendHost+"/classes/"+id);
@@ -33,4 +41,5 @@ export class ClasseService {
   public deleteClasse(id: number): Observable<any>{
     return this.http.delete(environment.backendHost+"/classes/"+id);
   }
+
 }

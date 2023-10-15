@@ -5,6 +5,7 @@ import { Classe } from '../../../models/classes.models';
 import { ClasseService } from '../../../services/classe.service';
 import { Filiere } from '../../../models/filieres.models';
 import { FiliereService } from '../../../services/filiere.service';
+import {Departement} from "../../../models/departement.models";
 
 @Component({
   selector: 'app-add-new-classe',
@@ -13,7 +14,7 @@ import { FiliereService } from '../../../services/filiere.service';
 })
 export class AddNewClasseComponent implements OnInit {
   newClassFormGroup!: FormGroup;
-  filieres: string[] = [];
+  filieres: Filiere[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -23,44 +24,83 @@ export class AddNewClasseComponent implements OnInit {
 
   ngOnInit(): void {
     this.newClassFormGroup = this.fb.group({
-      libelle: [null, Validators.required],
-      nbrEleves: [null, Validators.required],
+        libelle: ['', Validators.required],
+        nbrEleves: [null, Validators.required],
       filiere: [null, Validators.required],
     });
 
     this.fetchFilieres();
   }
 
-  fetchFilieres() {
-    this.filiereService.getAllFilieres().subscribe(
-      (filieres: Filiere[]) => {
-        this.filieres = filieres.map(filiere => filiere.libelle);
-        console.log(this.filieres);
-        if (this.filieres.length > 0) {
-          this.newClassFormGroup.patchValue({ filiere: this.filieres[0] });
-        }
-      },
-      (error) => {
-        console.log(error);
+      fetchFilieres() {
+          this.filiereService.getAllFilieres().subscribe(
+              (response: any) => {
+                  if (response && Array.isArray(response.content)) {
+                      const filieres: Filiere[] = response.content;
+                      this.filieres = filieres;
+                      console.log(this.filieres);
+                      if (this.filieres.length > 0) {
+                          this.newClassFormGroup.patchValue({ filiere: this.filieres[0] });
+                      }
+                  } else {
+                      console.error('Unexpected response from the server:', response);
+                      // Handle the unexpected response here, such as displaying an error message.
+                  }
+              },
+              (error) => {
+                  console.log(error);
+                  // Handle the error here, such as displaying an error message.
+              }
+          );
       }
-    );
-  }
+
+
+
 
   handleAddClasse() {
     if (this.newClassFormGroup.valid) {
       const newClasse: Classe = this.newClassFormGroup.value;
-      this.clService.saveClasse(newClasse).subscribe(
-        (data) => {
-          Swal.fire('Succès', 'Classe ajoutée avec succès', 'success');
-          // Reset the form
-          this.newClassFormGroup.reset();
-        },
-        (error) => {
-          console.log(error.status); // 400
-          console.log(error.error); // {timestamp: '2023-06-11T11:25:16.216+00:00', status: 400, error: 'Bad Request', path: '/api/classes'}
-          console.log(error.message); // "Http failure response for http://localhost:8082/api/classes: 400 OK"
-        }
-      );
+
+      // Find the selected filière object based on the selected ID
+      const selectedFiliereId: number = +newClasse.filiere; // Use a type assertion if necessary
+
+      const selectedFiliere = this.filieres.find(filiere => filiere.id === selectedFiliereId);
+
+      if (selectedFiliere) {
+        // Update the 'filiere' property with the selected filière object
+        newClasse.filiere = selectedFiliere;
+
+        console.log('Adding new class:', newClasse);
+
+        // Send the selected filiereId to the backend
+        const filiereIdToSend = selectedFiliere.id;
+
+        this.clService.saveClasse(newClasse, filiereIdToSend).subscribe(
+          (data) => {
+            console.log('Response data:', data);
+            Swal.fire('Succès', 'Classe ajoutée avec succès', 'success');
+            // Reset the form
+            this.newClassFormGroup.reset();
+          },
+          (error) => {
+            console.log('Error status:', error.status);
+            console.log('Error message:', error.message);
+            console.log('Error details:', error.error);
+
+            Swal.fire(
+              'Erreur',
+              'Erreur lors de l\'ajout de la classe: ' + error.message,
+              'error'
+            );
+          }
+        );
+      } else {
+        Swal.fire(
+          'Erreur',
+          'La filière sélectionnée est introuvable',
+          'error'
+        );
+      }
     } else {
       Swal.fire(
         'Erreur',
@@ -69,4 +109,8 @@ export class AddNewClasseComponent implements OnInit {
       );
     }
   }
+
+
+
+
 }

@@ -4,6 +4,8 @@ import {ClasseService} from "../../../services/classe.service";
 import {Etudiant} from "../../../models/etudiant.model";
 import {Classe} from "../../../models/classes.models";
 import {EtudiantService} from "../../../services/etudiant.service";
+import Swal from "sweetalert2";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-gestion-etudiant',
@@ -18,7 +20,7 @@ export class GestionEtudiantComponent {
   ngOnInit(): void {
     this.getClasses()
   }
-  constructor(private classeService:ClasseService, private etudiantService:EtudiantService) {
+  constructor(private classeService:ClasseService, private etudiantService:EtudiantService, private router: Router) {
 
   }
   private getClasses() {
@@ -41,5 +43,27 @@ export class GestionEtudiantComponent {
     else {
       this.etuds = []
     }
+  }
+
+  handleEditeEtud(etud: Etudiant) {
+    this.router.navigateByUrl('/etud/edit',{state :etud});
+  }
+
+  handleDeleteEtud(etud: Etudiant) {
+    Swal.fire({
+      title: 'Vous etes sur?',
+      text: "Vous ne pourrez pas revenir en arrière!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Oui, supprimez-le!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.etudiantService.deleteEud(etud.id).subscribe();
+        this.etuds.splice( this.etuds.indexOf(etud),1);
+
+      }
+    });
   }
 }

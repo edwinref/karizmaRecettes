@@ -9,6 +9,7 @@ export interface Etudiant {
   email:      string;
   login:      string;
   password:   string;
+  tel: string;
   classe: Classe;
 
 

@@ -26,6 +26,7 @@ import {GestionModuleComponent} from "./components/gestion/gestion-coursmodules/
 import {EditModuleComponent} from "./components/edit/edit-coursmodule/edit-coursmodules.component";
 import {GestionEtudiantComponent} from "./components/gestion/gestion-etudiant/gestion-etudiant.component";
 import {AddNewEtudiantComponent} from "./components/add/add-new-etudiant/add-new-etudiant.component";
+import {EditEtudComponent} from "./components/edit/edit-etud/edit-etud.component";
 
 const routes: Routes = [
   { path :'' , component: HomeComponent},
@@ -43,6 +44,7 @@ const routes: Routes = [
     { path :'salles/add' , component: AddNewSalleComponent},
     { path :'emploitemps' , component: TimetableComponent},
     {path:'profs/edit',component:EditProfComponent},
+  {path:'etud/edit',component:EditEtudComponent},
     { path :'departements/edit' , component: EditDepartementComponent},
     { path :'salles/edit' , component: EditSalleComponent},
     { path :'filieres/edit' , component: EditFiliereComponent},

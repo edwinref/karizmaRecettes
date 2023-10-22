@@ -20,4 +20,8 @@ export class EtudiantService {
   public searchEtud(id : any):Observable<Etudiant[]>{
     return this.http.get<Etudiant[]>(environment.backendHost+"/etudiant/"+id)
   }
+
+  deleteEud(id: number) {
+    return this.http.delete(environment.backendHost+"/etudiant/"+id);
+  }
 }

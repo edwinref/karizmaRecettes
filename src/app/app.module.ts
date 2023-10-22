@@ -41,6 +41,7 @@ import {AddNewEtudiantComponent} from "./components/add/add-new-etudiant/add-new
 import {GestionEtudiantComponent} from "./components/gestion/gestion-etudiant/gestion-etudiant.component";
 import {GestionModuleComponent} from "./components/gestion/gestion-coursmodules/gestion-coursmodules.component";
 import {EditModuleComponent} from "./components/edit/edit-coursmodule/edit-coursmodules.component";
+import { EditEtudComponent } from './components/edit/edit-etud/edit-etud.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import {EditModuleComponent} from "./components/edit/edit-coursmodule/edit-cours
     GestionModuleComponent,
     EditModuleComponent,
     AddNewEtudiantComponent,
-    GestionEtudiantComponent
+    GestionEtudiantComponent,
+    EditEtudComponent
   ],
   imports: [
     BrowserModule,

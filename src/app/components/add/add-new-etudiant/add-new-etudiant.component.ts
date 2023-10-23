@@ -8,12 +8,30 @@ import {Etudiant} from "../../../models/etudiant.model";
 import {EtudiantService} from "../../../services/etudiant.service";
 import {Classe} from "../../../models/classes.models";
 import {ClasseService} from "../../../services/classe.service";
+import * as XLSX from 'xlsx';
+interface CSVData {
+  id?: number; // Define the structure of each object
+
+  civilite: string;
+  nom:        string;
+  prenom:     string;
+  cne:        string;
+  email:      string;
+  login:      string;
+  password:   string;
+  tel: string;
+  classeId: number;
+}
+
 
 @Component({
   selector: 'app-add-new-prof',
   templateUrl: './add-new-etudiant.component.html',
   styleUrls: ['./add-new-etudiant.component.css']
 })
+
+
+
 export class AddNewEtudiantComponent {
   newProfFormGroup!: FormGroup;
   classe: Classe[] = [];
@@ -93,6 +111,84 @@ export class AddNewEtudiantComponent {
       Swal.fire('Error', 'Veuillez remplir correctement tous les champs du formulaire', 'error');
     }
   }
+  handleFileInput(event: any) {
+    const file = event.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        if (e.target) {
+          const fileContent = e.target.result as ArrayBuffer;
+          this.parseXLSXData(fileContent);
+        }
+      };
+
+      reader.readAsArrayBuffer(file);
+    }
+  }
+
+  parseXLSXData(fileContent: ArrayBuffer) {
+    const workbook = XLSX.read(fileContent, { type: 'array' });
+    const sheetName = workbook.SheetNames[0];
+    const worksheet = workbook.Sheets[sheetName];
+    const data = XLSX.utils.sheet_to_json(worksheet, { raw: true });
+
+    this.handleAddEtudiantFromXLSX(data);
+  }
+
+  handleAddEtudiantFromXLSX(data: any[]) {
+    if (data && data.length > 0) {
+      data.forEach((entry: CSVData) => {
+        this.addEtudiantFromXLSX(entry);
+      });
+    } else {
+      Swal.fire('Error', 'Aucune donnée d\'étudiant valide à ajouter', 'error');
+    }
+  }
+
+  addEtudiantFromXLSX(etudiant: CSVData) {
+    if (etudiant.classeId) {
+      const newEtudiant: {
+        classeId: number; // Add a property for classeId
+        password: string;
+
+        tel: string;
+        cne: string;
+        login: string;
+        nom: string;
+        prenom: string;
+        email: string;
+        civilite: string;
+      } = {
+        classeId: etudiant.classeId, // Assign the classeId
+        civilite: etudiant.civilite,
+        cne: etudiant.cne,
+        email: etudiant.email,
+        login: etudiant.login,
+        nom: etudiant.nom,
+        password: etudiant.password,
+        prenom: etudiant.prenom,
+        tel: etudiant.tel
+      };
+
+      // Find the Classe object for the Etudiant
+      // ...
+
+      // Save the Etudiant to the database
+      this.profService.saveEtudiant1(newEtudiant, newEtudiant.classeId).subscribe({
+        next: data => {
+          console.log('Etudiant ajouté avec succès:', newEtudiant);
+        },
+        error: err => {
+          console.error('Erreur lors de l\'ajout de l\'étudiant:', err);
+        }
+      });
+    } else {
+      console.error('classe.id is undefined in the XLSX data');
+    }
+  }
+
 
 
 }

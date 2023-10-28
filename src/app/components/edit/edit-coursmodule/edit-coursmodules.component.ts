@@ -57,7 +57,7 @@ export class EditModuleComponent implements OnInit {
     }
   }
   fetchClasse() {
-    this.classeService.getClassess().subscribe(
+    this.classeService.getClasses1().subscribe(
       (response: any) => {
         if (response && Array.isArray(response.content)) {
           const filieres: Classe[] = response.content;

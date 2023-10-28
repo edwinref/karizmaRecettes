@@ -21,6 +21,10 @@ export class EtudiantService {
     return this.http.get<Etudiant[]>(environment.backendHost+"/etudiant/"+id)
   }
 
+  public getById(id : number):Observable<Etudiant>{
+    return this.http.get<Etudiant>(environment.backendHost+"/etudiant/etud/"+id)
+  }
+
   deleteEud(id: number) {
     return this.http.delete(environment.backendHost+"/etudiant/"+id);
   }

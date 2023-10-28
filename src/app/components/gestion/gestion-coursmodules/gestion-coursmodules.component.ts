@@ -1,4 +1,4 @@
-import {Component, OnInit, Renderer2} from '@angular/core';
+import {Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, NgForm} from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -24,6 +24,8 @@ export class GestionModuleComponent implements OnInit {
 
   errorMessage: string = '';
   searchFormGroup!: FormGroup;
+
+  @ViewChild('close', { static: true }) close!: ElementRef;
 
   constructor(
     private moduleService: ModuleService,
@@ -113,7 +115,8 @@ console.log(form.value)
     this.moduleService.createModule(module, module.classe.id).subscribe(data =>{
       console.log(data)
       Swal.fire('Success', 'Module Affected avec succès', 'success');
-      this.hideModal();
+        const buttonElement = this.close.nativeElement as HTMLButtonElement;
+        buttonElement.click();
 
     },
       err => {
@@ -123,7 +126,8 @@ console.log(form.value)
       } else {
         Swal.fire('Error', 'erreuur', 'error');
       }
-        this.hideModal();
+        const buttonElement = this.close.nativeElement as HTMLButtonElement;
+        buttonElement.click();
     }
     )
   }

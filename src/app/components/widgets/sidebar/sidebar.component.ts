@@ -76,6 +76,25 @@ sidebarProfItems = [
   },
 
 ]
+
+  sidebarEtudItems = [
+    {
+      link: "/home",
+      title: "Home",
+      icon: "fas fa-home"
+    },
+    {
+      link: "/emploitemps",
+      title: "Emploi du temps",
+      icon: "fas fa-clipboard-list"
+    },
+    {
+      link: "/crit/add",
+      title: "Constraintes",
+      icon: "fas fa-clipboard-list"
+    },
+
+  ]
   constructor(private cookieService: CookieService) { }
 
   handleChangeBars(index: number): void {
@@ -85,8 +104,10 @@ sidebarProfItems = [
 
     if(this.cookieService.get('role') == "Administrateur"){
      this.sidebarItems= this.sidebarAdminItems;
-    }else {
-     this.sidebarItems= this.sidebarProfItems;
+    }else if(this.cookieService.get('role') == "Etudiant"){
+     this.sidebarItems= this.sidebarEtudItems;
+    }else{
+      this.sidebarItems= this.sidebarProfItems;
     }
 
 }

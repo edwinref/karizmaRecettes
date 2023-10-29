@@ -4,9 +4,14 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { FiliereService } from '../../../services/filiere.service';
 import { Filiere } from '../../../models/filieres.models';
-import { Departement } from '../../../models/departement.models';
-import { DepartmentService } from '../../../services/department.service';
+import * as XLSX from 'xlsx';
 
+interface FiliereCSV {
+  libelle: string;
+  nombreSem: number;
+  chefFiliere: string;
+  departement: string;
+}
 @Component({
   selector: 'app-add-new-filiere',
   templateUrl: './add-new-filiere.component.html',
@@ -51,4 +56,74 @@ export class AddNewFiliereComponent implements OnInit {
       );
     }
   }
+  handleFileInput(event: any) {
+    const file = event.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        if (e.target) {
+          const fileContent = e.target.result as ArrayBuffer;
+          this.parseXLSXFiliereData(fileContent);
+        }
+      };
+
+      reader.readAsArrayBuffer(file);
+    }
+  }
+
+  parseXLSXFiliereData(fileContent: ArrayBuffer) {
+    const workbook = XLSX.read(fileContent, { type: 'array' });
+    const sheetName = workbook.SheetNames[0];
+    const worksheet = workbook.Sheets[sheetName];
+    const data = XLSX.utils.sheet_to_json(worksheet, { raw: true });
+
+    this.handleAddFiliereFromXLSX(data);
+  }
+
+  handleAddFiliereFromXLSX(data: any[]) {
+    if (data && data.length > 0) {
+      data.forEach((entry: Filiere) => {
+        this.addFiliereFromXLSX(entry);
+      });
+    } else {
+      Swal.fire('Error', 'Aucune donnée de filière valide à ajouter', 'error');
+    }
+  }
+
+  addFiliereFromXLSX(filiere: FiliereCSV) {
+    if (filiere.libelle && filiere.departement) {
+      const newFiliere: { chefFiliere: string; nombreSem: number; departement: string; libelle: string } = {
+        libelle: filiere.libelle,
+        nombreSem: filiere.nombreSem,
+        chefFiliere: filiere.chefFiliere,
+        departement: filiere.departement
+      };
+
+      this.filiereService.saveFiliere1(newFiliere).subscribe({
+        next: data => {
+          console.log('Filiere ajoutée avec succès:', newFiliere);
+          Swal.fire('Success', 'Filiere ajoutée avec succès', 'success');
+        },
+        error: err => {
+          // Check the error response to determine if it's a successful addition or a real error
+          if (err.status === 201) {
+            console.log('Filiere ajoutée avec succès:', newFiliere);
+            // Display a success message here if needed
+          } else {
+            // Utilize Swal.fire to display an error message
+            Swal.fire('Erreur', 'Erreur lors de l\'ajout de la Filiere', 'error');
+            console.error('Erreur lors de l\'ajout de la Filiere:', err);
+          }
+        }
+      });
+    } else {
+      // Utilize Swal.fire to display an error message
+      Swal.fire('Erreur', 'Libellé et département sont requis pour ajouter une Filière', 'error');
+      console.error('Libellé and département are required in the XLSX data');
+    }
+  }
+
+
 }

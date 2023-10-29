@@ -24,6 +24,14 @@ export class FiliereService {
   public saveFiliere(Filiere: Filiere):Observable<Filiere>{
     return this.http.post<Filiere>(environment.backendHost+"/filieres",Filiere);
   }
+  public saveFiliere1(Filiere: {
+    chefFiliere: string;
+    nombreSem: number;
+    departement: string;
+    libelle: string
+  }):Observable<Filiere>{
+    return this.http.post<Filiere>(environment.backendHost+"/filieres",Filiere);
+  }
   public updateFiliere(id: number,Filiere: Filiere):Observable<Filiere>{
      console.log("Update f");
     return this.http.put<Filiere>(environment.backendHost+"/filieres/"+id,Filiere);

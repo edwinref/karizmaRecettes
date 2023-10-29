@@ -6,6 +6,7 @@ import {Classe} from "../../../models/classes.models";
 import {EtudiantService} from "../../../services/etudiant.service";
 import Swal from "sweetalert2";
 import {Router} from "@angular/router";
+import {CriteriaService} from "../../../services/Criteria.service";
 
 @Component({
   selector: 'app-gestion-etudiant',
@@ -20,7 +21,7 @@ export class GestionEtudiantComponent {
   ngOnInit(): void {
     this.getClasses()
   }
-  constructor(private classeService:ClasseService, private etudiantService:EtudiantService, private router: Router) {
+  constructor(private classeService:ClasseService, private criteriaService:CriteriaService, private etudiantService:EtudiantService, private router: Router) {
 
   }
   private getClasses() {
@@ -66,4 +67,15 @@ export class GestionEtudiantComponent {
       }
     });
   }
+criteria : any
+  handleCritereEtud(etud: Etudiant) {
+    this.criteria = null
+    this.criteriaService.getCriteria(etud.id).subscribe(data =>{
+      console.log("wwwwwwwwwwwwwwwwwwwwwwwwww")
+      console.log(data)
+      this.criteria = data;
+  }, error => {
+      this.criteria = null;
+    })
+}
 }

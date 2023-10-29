@@ -75,6 +75,11 @@
             <td>{{ etud.classe.libelle }}</td>
             <td class="text-end">
               <div class="actions">
+                <button data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="handleCritereEtud(etud)"
+                  class="btn btn-sm bg-success-light me-2"
+                >
+                  <i class="fas fa-eye"></i>
+                </button>
                 <button
                   (click)="handleEditeEtud(etud)"
                   class="btn btn-sm bg-success-light me-2"
@@ -98,3 +103,33 @@
   </div>
 </div>
 <!-- Modal -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Les criteres de l'etudiant</h5>
+        <button type="button" #close class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close"></button>
+      </div>
+        <div class="modal-body">
+          <div *ngIf="criteria != null">
+          <table class="table table-striped">
+            <tr>
+              <td><h3 class="page-title">equipment</h3> {{criteria?.equipment}}</td>
+              <td><h3 class="page-title">preference </h3> {{criteria?.preference}}</td>
+            </tr>
+            <tr>
+              <td><h3 class="page-title">infrastructure </h3> {{criteria?.infrastructure}}</td>
+              <td><h3 class="page-title">the learning space</h3> {{criteria?.learningSpace}}</td>
+            </tr>
+          </table>
+          </div>
+          <div *ngIf="!criteria">the student didn't specify his constraints !</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+    </div>
+
+  </div>
+</div>

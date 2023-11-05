@@ -1,0 +1,8 @@
+/* layout.component.css */
+.background-image {
+  background-image: url('assets/img/17973908.jpg'); /* Use a relative path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%; /* Set the desired height */
+}

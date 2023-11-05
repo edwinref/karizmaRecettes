@@ -6,6 +6,8 @@ import { AppComponent } from './components/dashboard/app.component';
 import { SidebarComponent } from './components/widgets/sidebar/sidebar.component';
 import { NavbarComponent } from './components/widgets/navbar/navbar.component';
 import { FooterComponent } from './components/widgets/footer/footer.component';
+import { BackgroundComponent } from './components/widgets/background/background.component';
+
 import { PageHeaderComponent } from './components/widgets/page-header/page-header.component';
 import { StatistiqueComponent } from './components/widgets/statistique/statistique.component';
 import { AddNewProfComponent } from './components/add/add-new-prof/add-new-prof.component';
@@ -85,7 +87,8 @@ import { AddCriteriaComponent } from './components/add/add-criteria/add-criteria
     GestionEtudiantComponent,
     EditEtudComponent,
     GestionCriteriaComponent,
-    AddCriteriaComponent
+    AddCriteriaComponent,
+    BackgroundComponent
   ],
   imports: [
     BrowserModule,

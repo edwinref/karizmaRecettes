@@ -11,14 +11,14 @@
         <input
           type="text"
           class="form-control"
-          placeholder="Recherche par libellé..."
+          placeholder="Search.."
         />
       </div>
     </div>
 
     <div class="col-lg-2">
       <div class="search-student-btn">
-        <button type="button" class="btn btn-primary">Chercher</button>
+        <button type="button" class="btn btn-primary">Search</button>
       </div>
     </div>
   </div>
@@ -31,7 +31,7 @@
         <div class="page-header">
           <div class="row align-items-center">
             <div class="col">
-              <h3 class="page-title">Filière</h3>
+              <h3 class="page-title">Major (Filiere)</h3>
             </div>
             <div class="col-auto text-end float-end ms-auto download-grp">
               <a routerLink="/filieres/add" class="btn btn-primary"
@@ -41,14 +41,14 @@
           </div>
           <div class="row align-items-center">
             <div class="col">
-              <span class="m-2">Afficher</span>
+              <span class="m-2">Display</span>
               <select class="form-select form-select-sm w-auto">
                 <option selected="" value="10">10</option>
                 <option value="25">25</option>
                 <option value="50">50</option>
                 <option value="100">100</option>
               </select>
-              <span class="m-2">Entrées</span>
+              <span class="m-2">Entries</span>
             </div>
           </div>
         </div>
@@ -68,10 +68,10 @@
                 </div>
               </th>
               <th>ID</th>
-              <th>Libelle</th>
+              <th>Label</th>
               <th>Semestre</th>
-              <th>Chef de Filière</th>
-              <th>Département</th>
+              <th>Major Coordinator</th>
+              <th>Department</th>
 
               <th class="text-end">Action</th>
             </tr>
@@ -112,7 +112,7 @@
          </table>
          <ul class="pagination justify-content-end mt-4">
            <li class="page-item " [ngClass]="{ disabled: currentPage === 0 }">
-             <a class="page-link" tabindex="-1" (click)="goToPreviousSet()">Précédent </a>
+             <a class="page-link" tabindex="-1" (click)="goToPreviousSet()">Previous </a>
            </li>
            <li
              class="page-item"
@@ -131,7 +131,7 @@
               [disabled]="currentPage >= totalPages - 1"
               (click)="goToNextSet()"
             >
-              Suivant
+              Next
             </button>
           </li>
         </ul>

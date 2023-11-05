@@ -98,6 +98,35 @@
           </tbody>
         </table>
       </div>
+
+      <!-- Pagination -->
+      <ul class="pagination justify-content-end mt-4">
+        <li class="page-item" [ngClass]="{ disabled: currentPage === 0 }">
+          <a class="page-link" tabindex="-1" (click)="goToPreviousSet()"
+          >Previous</a
+          >
+        </li>
+        <li
+                class="page-item"
+                *ngFor="let page of displayedPages"
+                [class.selected]="currentPage === page"
+        >
+          <a class="page-link" (click)="gotoPage(page)">{{ page + 1 }}</a>
+        </li>
+        <li
+                class="page-item"
+                [ngClass]="{ disabled: currentPage >= totalPages - 1 }"
+        >
+          <!-- Add the following code to disable the "Suivant" button when there are no more pages to show -->
+          <button
+                  class="page-link"
+                  [disabled]="currentPage >= totalPages - 1"
+                  (click)="goToNextSet()"
+          >
+            Next
+          </button>
+        </li>
+      </ul>
     </div>
 
   </div>

@@ -1,7 +1,7 @@
 <app-page-header
   [link]="'profs'"
-  [prev]="'Enseignants'"
-  [current]="'Ajouter un Enseignant'"
+  [prev]="'Profesors'"
+  [current]="'Add Profesor'"
 ></app-page-header>
 
 <div class="row">
@@ -12,7 +12,7 @@
           <div class="row">
             <div class="col-12">
               <h5 class="form-title student-info">
-                Informations sur l'Enseignant<span
+                Profesor Informations<span
                   ><a href="javascript:;"
                     ><i class="feather-more-vertical"></i></a
                 ></span>
@@ -20,7 +20,7 @@
             </div>
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
-                <label>Prénom <span class="login-danger">*</span></label>
+                <label>First Name <span class="login-danger">*</span></label>
                 <input
                   class="form-control"
                   type="text"
@@ -30,16 +30,16 @@
             </div>
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
-                <label>Nom <span class="login-danger">*</span></label>
+                <label>Family Name <span class="login-danger">*</span></label>
                 <input class="form-control" type="text" formControlName="nom" />
               </div>
             </div>
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms angle-icon">
-                <label>Civilité <span class="login-danger">*</span></label>
+                <label>Gender <span class="login-danger">*</span></label>
                 <select class="form-control select" formControlName="civilite">
-                  <option value="F">Féminin</option>
-                  <option value="M">Masculin</option>
+                  <option value="F">Female</option>
+                  <option value="M">Male</option>
                 </select>
               </div>
             </div>
@@ -62,7 +62,7 @@
             </div>
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
-                <label>Spécialité <span class="login-danger">*</span></label>
+                <label>Speciality <span class="login-danger">*</span></label>
                 <input
                   class="form-control"
                   type="text"
@@ -72,7 +72,7 @@
             </div>
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
-                <label>Téléphone </label>
+                <label>Phone Number </label>
                 <input class="form-control" type="text" formControlName="tel" />
               </div>
             </div>
@@ -80,7 +80,7 @@
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
                 <label
-                  >Nom d'utilisateur <span class="login-danger">*</span></label
+                  >Username (Login)<span class="login-danger">*</span></label
                 >
                 <input
                   type="text"
@@ -91,7 +91,7 @@
             </div>
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
-                <label>Mot de passe <span class="login-danger">*</span></label>
+                <label>Password <span class="login-danger">*</span></label>
                 <input
                   type="password"
                   class="form-control"
@@ -104,7 +104,7 @@
               class="col-12 d-flex align-items-center justify-content-center"
             >
               <div class="student-submit">
-                <button type="submit" class="btn btn-primary">Confirmer</button>
+                <button type="submit" class="btn btn-primary">Confirm</button>
               </div>
             </div>
           </div>
@@ -113,11 +113,18 @@
             <div class="col-12 col-sm-12">
               <div class="form-group students-up-files">
                 <label>
-                  Vous pouvez également charger une liste des prof (xlsx, csv)
+                  You can also upload a list of students (xlsx)
                 </label>
                 <div class="uplod">
+                  <label >
+                    View Example of File
+                    <button (click)="downloadXSL()" class="green-button">Download XSL File</button>
+
+                  </label>
+                </div>
+                <div class="uplod">
                   <label class="file-upload image-upbtn mb-0">
-                    Choisir un Fichier <input type="file" id="fileInput" (change)="handleFileInput($event)" />
+                    Upload a file <input type="file" id="fileInput" (change)="handleFileInput($event)" />
                   </label>
                 </div>
               </div>

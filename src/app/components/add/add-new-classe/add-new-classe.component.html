@@ -1,7 +1,7 @@
 <app-page-header
   [link]="'classes'"
-  [prev]="'Classes'"
-  [current]="'Ajouter une Classe'"
+  [prev]="'Grade'"
+  [current]="'Add Grade'"
 ></app-page-header>
 
 <div class="row">
@@ -12,7 +12,7 @@
           <div class="row">
             <div class="col-12">
               <h5 class="form-title student-info">
-                Informations sur la Classe<span
+                Room Informations<span
               ><a href="javascript:;"
               ><i class="feather-more-vertical"></i></a
               ></span>
@@ -20,31 +20,31 @@
             </div>
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
-                <label>libellé <span class="login-danger">*</span></label>
+                <label>Label <span class="login-danger">*</span></label>
                 <input
                   class="form-control"
                   type="text"
-                  placeholder="libellé ...."
+                  placeholder="label ...."
                   formControlName="libelle"
                 />
               </div>
             </div>
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
-                <label>nombre d'élèves <span class="login-danger">*</span></label>
+                <label>Number of students <span class="login-danger">*</span></label>
                 <input
                   class="form-control"
                   type="number"
-                  placeholder="nombre d'élèves...."
+                  placeholder="number of students...."
                   formControlName="nbrEleves"
                 />
               </div>
             </div>
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
-                <label>filière<span class="login-danger">*</span></label>
+                <label>Major<span class="login-danger">*</span></label>
                 <select class="form-control" formControlName="filiere">
-                  <option value="" disabled selected>Choisir une filière</option>
+                  <option value="" disabled selected>Choose Major</option>
                   <option *ngFor="let filiere of filieres" [value]="filiere.id">{{ filiere.libelle }}</option>
                 </select>
 
@@ -52,7 +52,7 @@
             </div>
             <div class="col-12 d-flex align-items-center justify-content-center">
               <div class="student-submit">
-                <button type="submit" class="btn btn-primary">Confirmer</button>
+                <button type="submit" class="btn btn-primary">Confirm</button>
               </div>
             </div>
           </div>

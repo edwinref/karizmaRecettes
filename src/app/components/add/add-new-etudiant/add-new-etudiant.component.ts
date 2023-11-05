@@ -78,6 +78,25 @@ export class AddNewEtudiantComponent {
       }
     );
   }
+  downloadXSL() {
+    const xslFilePath = 'assets/DataCSV/Etudiants.xlsx';
+    fetch(xslFilePath)
+      .then((response) => response.blob())
+      .then((blob) => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Etudiants.xlsx'; // Update with the desired filename
+        a.click();
+        window.URL.revokeObjectURL(url);
+        // Show a SweetAlert2 success message after the download is complete
+        Swal.fire({
+          icon: 'success',
+          title: 'Download Complete',
+          text: 'Your XSL file has been downloaded successfully!',
+        });
+      });
+  }
   handleAddEtudiant() {
     if (this.newProfFormGroup.valid) {
       const newEtudiant: Etudiant = this.newProfFormGroup.value;

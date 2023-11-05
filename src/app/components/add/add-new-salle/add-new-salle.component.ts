@@ -87,6 +87,26 @@ export class AddNewSalleComponent {
     }
   }
 
+  downloadXSL() {
+    const xslFilePath = 'assets/DataCSV/Salles.xlsx';
+    fetch(xslFilePath)
+      .then((response) => response.blob())
+      .then((blob) => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Salles.xlsx'; // Update with the desired filename
+        a.click();
+        window.URL.revokeObjectURL(url);
+        // Show a SweetAlert2 success message after the download is complete
+        Swal.fire({
+          icon: 'success',
+          title: 'Download Complete',
+          text: 'Your XSL file has been downloaded successfully!',
+        });
+      });
+  }
+
   addSalleFromXLSX(salle: SalleCSV) {
     // Check if required properties for salle are present
     if (salle.bloc && salle.numSalle && salle.typeSalle && salle.capacite) {
@@ -121,6 +141,8 @@ export class AddNewSalleComponent {
       console.error('Salle data is incomplete or invalid.');
     }
   }
+
+
 
 
 }

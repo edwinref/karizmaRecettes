@@ -11,14 +11,14 @@
           <input
             type="text"
             class="form-control"
-            placeholder="Recherche par jour..."
+            placeholder="Search by day.."
           />
         </div>
       </div>
 
       <div class="col-lg-2">
         <div class="search-student-btn">
-          <button type="button" class="btn btn-primary">Chercher</button>
+          <button type="button" class="btn btn-primary">Search</button>
         </div>
       </div>
     </div>
@@ -124,13 +124,13 @@
       <form #form="ngForm" (ngSubmit)="update(module)">
         <div class="modal-body">
           <div class="col-md-12  form-group ">
-            <label class="col-md-12" for="">volume Horaire Onsite</label>
+            <label class="col-md-12" for="">Horaire Onsite Hourly Volume</label>
             <input type="text" name="volumeHoraireOnsite" [(ngModel)]="module.volumeHoraireOnsite" class="form-control"
                    placeholder="nom" required readonly>
           </div>
 
           <div class="col-md-12  form-group ">
-            <label class="col-md-12" for="">volume Horaire OnRemote</label>
+            <label class="col-md-12" for="">OnRemote Hourly Volume</label>
             <input type="text" name="volumeHoraireOnRemote" [(ngModel)]="module.volumeHoraireOnRemote" class="form-control"
                    placeholder="nom" required readonly>
           </div>

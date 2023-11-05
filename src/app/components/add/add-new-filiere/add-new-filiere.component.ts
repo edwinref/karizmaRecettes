@@ -91,7 +91,25 @@ export class AddNewFiliereComponent implements OnInit {
       Swal.fire('Error', 'Aucune donnée de filière valide à ajouter', 'error');
     }
   }
-
+  downloadXSL() {
+    const xslFilePath = 'assets/DataCSV/Filieres.xlsx';
+    fetch(xslFilePath)
+      .then((response) => response.blob())
+      .then((blob) => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Filieres.xlsx'; // Update with the desired filename
+        a.click();
+        window.URL.revokeObjectURL(url);
+        // Show a SweetAlert2 success message after the download is complete
+        Swal.fire({
+          icon: 'success',
+          title: 'Download Complete',
+          text: 'Your XSL file has been downloaded successfully!',
+        });
+      });
+  }
   addFiliereFromXLSX(filiere: FiliereCSV) {
     if (filiere.libelle && filiere.departement) {
       const newFiliere: { chefFiliere: string; nombreSem: number; departement: string; libelle: string } = {

@@ -22,7 +22,9 @@ export class SalleService {
   public saveSalle(salle: Salle): Observable<Salle> {
     return this.http.post<Salle>(environment.backendHost + "/salles", salle);
   }
-
+  public saveSalle1(salle: { bloc: string; capacite: number; numSalle: number; typeSalle: string }): Observable<Salle> {
+    return this.http.post<Salle>(environment.backendHost + "/salles", salle);
+  }
   public updateSalle(id: number, salle: Salle): Observable<Salle> {
     return this.http.put<Salle>(environment.backendHost + "/salles/" + id, salle);
   }

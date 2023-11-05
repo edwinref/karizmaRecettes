@@ -25,6 +25,19 @@ export class ProfServiceService {
   public saveProf(Prof: Prof):Observable<Prof>{
     return this.http.post<Prof>(environment.backendHost+"/enseignants",Prof);
   }
+  public saveProf1(Prof: {
+    password: string;
+    specialite: string;
+    tel: string;
+    cne: string;
+    login: string;
+    nom: string;
+    prenom: string;
+    email: string;
+    civilite: string
+  }):Observable<Prof>{
+    return this.http.post<Prof>(environment.backendHost+"/enseignants",Prof);
+  }
   public updateProf(id: number,Prof: Prof):Observable<Prof>{
     return this.http.put<Prof>(environment.backendHost+"/enseignants/"+id,Prof);
   }

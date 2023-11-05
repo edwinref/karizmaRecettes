@@ -1,7 +1,7 @@
 <app-page-header
   [link]="'filieres'"
-  [prev]="'filières'"
-  [current]="'Ajouter une Filière'"
+  [prev]="'Major'"
+  [current]="'Add Major'"
 ></app-page-header>
 
 <div class="row">
@@ -15,7 +15,7 @@
           <div class="row">
             <div class="col-12">
               <h5 class="form-title student-info">
-                Informations sur la Filière<span
+                Major Informations<span
               ><a href="javascript:;"
               ><i class="feather-more-vertical"></i></a
               ></span>
@@ -23,22 +23,22 @@
             </div>
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
-                <label>libellé <span class="login-danger">*</span></label>
+                <label>Label <span class="login-danger">*</span></label>
                 <input
                   class="form-control"
                   type="text"
-                  placeholder="libellé ...."
+                  placeholder="label ...."
                   formControlName="libelle"
                 />
               </div>
             </div>
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
-                <label>nombre de semestres <span class="login-danger">*</span></label>
+                <label>Number of Semesters <span class="login-danger">*</span></label>
                 <input
                   class="form-control"
                   type="number"
-                  placeholder="nombre de semestres...."
+                  placeholder="Number of Semesters...."
                   formControlName="nombreSem"
                 />
               </div>
@@ -48,7 +48,7 @@
 
               <div class="form-group local-forms">
                 <label
-                >Chef du Filiére<span class="login-danger">*</span></label
+                >Major Coordinator<span class="login-danger">*</span></label
                 >
                 <input
                   class="form-control"
@@ -58,7 +58,7 @@
               </div>
 
               <div class="form-group local-forms">
-                <label>Département<span class="login-danger">*</span></label>
+                <label>Department<span class="login-danger">*</span></label>
                 <select class="form-control" formControlName="departement">
                   <option value="TRI">TRI</option>
                   <option value="STIN">STIN</option>
@@ -72,24 +72,31 @@
 
             <div class="col-12 d-flex align-items-center justify-content-center">
               <div class="student-submit">
-                <button type="submit" class="btn btn-primary">Confirmer</button>
+                <button type="submit" class="btn btn-primary">Confirm</button>
               </div>
             </div>
             <hr class="mt-4" />
-            <!--
+
              <div class="col-12 col-sm-12">
                <div class="form-group students-up-files">
                  <label>
-                   Vous pouvez également charger une liste de filières (xlsx, csv, txt)
+                   You can also upload a list of students (xlsx)
                  </label>
                  <div class="uplod">
+                   <label >
+                     View Example of File
+                     <button (click)="downloadXSL()" class="green-button">Download XSL File</button>
+
+                   </label>
+                 </div>
+                 <div class="uplod">
                    <label class="file-upload image-upbtn mb-0">
-                     Choisir un Fichier <input type="file" />
+                     Upload a File <input type="file" id="fileInput" (change)="handleFileInput($event)" />
                    </label>
                  </div>
                </div>
              </div>
-             -->
+
           </div>
 
         </form>

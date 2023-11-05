@@ -14,17 +14,7 @@
             formControlName="keyword"
             type="text"
             class="form-control"
-            placeholder="Recherche par Prénom ..."
-          />
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6">
-        <div class="form-group">
-          <input
-            formControlName="keyword"
-            type="text"
-            class="form-control"
-            placeholder="Recherche par Nom ..."
+            placeholder="Search by name"
           />
         </div>
       </div>
@@ -34,13 +24,13 @@
             formControlName="keyword"
             type="text"
             class="form-control"
-            placeholder="Recherche par Spécialité ..."
+            placeholder="Search by speciality..."
           />
         </div>
       </div>
       <div class="col-lg-2">
         <div class="search-student-btn">
-          <button type="btn" class="btn btn-primary">Chercher</button>
+          <button type="btn" class="btn btn-primary">Search</button>
         </div>
       </div>
     </div>
@@ -54,7 +44,7 @@
         <div class="page-header">
           <div class="row align-items-center">
             <div class="col">
-              <h3 class="page-title">Professeurs</h3>
+              <h3 class="page-title">Profesors</h3>
             </div>
             <div class="col-auto text-end float-end ms-auto download-grp">
               <a routerLink="/profs/add" class="btn btn-primary">
@@ -64,7 +54,7 @@
           </div>
           <div class="row align-items-center">
             <div class="col">
-              <span class="m-2">Afficher</span>
+              <span class="m-2">Display</span>
               <!-- when selected value change , handle that -->
               <select
                 (change)="handleChangeSize($event)"
@@ -76,7 +66,7 @@
                 <option [ngValue]="option4">{{ option4 }}</option>
               </select>
 
-              <span class="m-2">Entrées</span>
+              <span class="m-2">Entries</span>
             </div>
           </div>
         </div>
@@ -96,11 +86,11 @@
                   </div>
                 </th>
                 <th>CNE</th>
-                <th>Prénom</th>
-                <th>Nom</th>
-                <th>Téléphone</th>
+                <th>Fist Name</th>
+                <th>Family Name</th>
+                <th>Number</th>
                 <th>Email</th>
-                <th>Spécialité</th>
+                <th>Speciality</th>
                 <th class="text-end">Action</th>
               </tr>
             </thead>
@@ -146,7 +136,7 @@
         <ul class="pagination justify-content-end mt-4">
           <li class="page-item" [ngClass]="{ disabled: currentPage === 0 }">
             <a class="page-link" tabindex="-1" (click)="goToPreviousSet()"
-              >Précédent</a
+              >Previous</a
             >
           </li>
           <li
@@ -166,7 +156,7 @@
               [disabled]="currentPage >= totalPages - 1"
               (click)="goToNextSet()"
             >
-              Suivant
+              Next
             </button>
           </li>
         </ul>

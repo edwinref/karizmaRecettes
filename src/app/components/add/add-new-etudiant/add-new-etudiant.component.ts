@@ -87,6 +87,25 @@ export class AddNewEtudiantComponent {
       }
     );
   }
+  downloadXSL() {
+    const xslFilePath = 'assets/DataCSV/Etudiants.xlsx';
+    fetch(xslFilePath)
+      .then((response) => response.blob())
+      .then((blob) => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Etudiants.xlsx'; // Update with the desired filename
+        a.click();
+        window.URL.revokeObjectURL(url);
+        // Show a SweetAlert2 success message after the download is complete
+        Swal.fire({
+          icon: 'success',
+          title: 'Download Complete',
+          text: 'Your XSL file has been downloaded successfully!',
+        });
+      });
+  }
   handleAddEtudiant() {
     if (this.newProfFormGroup.valid) {
       const newEtudiant: Etudiant = this.newProfFormGroup.value;
@@ -192,19 +211,27 @@ export class AddNewEtudiantComponent {
         tel: etudiant.tel
       };
 
-      // Find the Classe object for the Etudiant
-      // ...
-
-      // Save the Etudiant to the database
       this.profService.saveEtudiant1(newEtudiant, newEtudiant.classeId).subscribe({
         next: data => {
           console.log('Etudiant ajouté avec succès:', newEtudiant);
+          Swal.fire('Success', 'Etudiant ajouté avec succès', 'success');
         },
         error: err => {
-          console.error('Erreur lors de l\'ajout de l\'étudiant:', err);
+          // Check the error response to determine if it's a successful addition or a real error
+          if (err.status === 201) {
+            console.log('Etudiant ajouté avec succès:', newEtudiant);
+            // Display a success message here if needed
+          } else {
+            // Utilize Swal.fire to display an error message
+            Swal.fire('Erreur', 'Erreur lors de l\'ajout de l\'étudiant', 'error');
+            console.error('Erreur lors de l\'ajout de l\'étudiant:', err);
+          }
         }
       });
+
     } else {
+      // Utilisez Swal.fire pour afficher un message d'erreur
+      Swal.fire('Erreur', 'classe.id est indéfini dans les données XLSX', 'error');
       console.error('classe.id is undefined in the XLSX data');
     }
   }

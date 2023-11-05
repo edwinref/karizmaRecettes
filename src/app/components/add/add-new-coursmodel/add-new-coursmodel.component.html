@@ -1,6 +1,6 @@
 <app-page-header
   [link]="'coursmodules'"
-  [prev]="'Coursomdules'"
+  [prev]="'Modeling courses'"
   [current]="'Add a Module'"
 ></app-page-header>
 
@@ -12,7 +12,7 @@
           <div class="row">
             <div class="col-12">
               <h5 class="form-title student-info">
-                Module Information<span
+                Moding Course Informations<span
               ><a href="javascript:;"
               ><i class="feather-more-vertical"></i></a
               ></span>
@@ -20,29 +20,29 @@
             </div>
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
-                <label>Libellé <span class="login-danger">*</span></label>
+                <label>Libel <span class="login-danger">*</span></label>
                 <input
                   class="form-control"
                   type="text"
-                  formControlName="libelle"
+                  formControlName="libel"
                 />
               </div>
             </div>
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
-                <label>Volume Horaire Onsite <span class="login-danger">*</span></label>
+                <label>Onsite Hourly Volume <span class="login-danger">*</span></label>
                 <input class="form-control" type="text" formControlName="volumeHoraireOnsite" />
               </div>
             </div>
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms angle-icon">
-                <label>Volume Horaire Remote <span class="login-danger">*</span></label>
+                <label>Remote Hourly Volume <span class="login-danger">*</span></label>
                 <input class="form-control" type="text" formControlName="volumeHoraireOnRemote" />
               </div>
             </div>
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
-                <label>Nombre TD <span class="login-danger">*</span></label>
+                <label>Nbr TD <span class="login-danger">*</span></label>
                 <input
                   class="form-control"
                   type="text"
@@ -52,13 +52,13 @@
             </div>
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
-                <label>Nombre TP <span class="login-danger">*</span></label>
+                <label>Nbr TP <span class="login-danger">*</span></label>
                 <input class="form-control" type="text" formControlName="nbrTP" />
               </div>
             </div>
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
-                <label>Nombre d'Évaluation <span class="login-danger">*</span></label>
+                <label>Nbr Evaluation <span class="login-danger">*</span></label>
                 <input
                   class="form-control"
                   type="text"
@@ -68,7 +68,7 @@
             </div>
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
-                <label>Est Séparé <span class="login-danger">*</span></label>
+                <label>Is Separeted <span class="login-danger">*</span></label>
                 <select class="form-control select" formControlName="isSeperated">
                   <option value="true">Oui</option>
                   <option value="false">Non</option>
@@ -77,7 +77,7 @@
             </div>
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms angle-icon">
-                <label>Est Mutualisé <span class="login-danger">*</span></label>
+                <label>Is Mutual<span class="login-danger">*</span></label>
                 <select class="form-control select" formControlName="isMetuale">
                   <option value="true">Oui</option>
                   <option value="false">Non</option>
@@ -87,9 +87,9 @@
             <!-- Assuming you have a form control for selecting a Classe -->
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
-                <label>Classe <span class="login-danger">*</span></label>
+                <label>Grade (Classe) <span class="login-danger">*</span></label>
                 <select class="form-control select" formControlName="classe">
-                  <option value="" disabled selected>Choisir une classe</option>
+                  <option value="" disabled selected>Chose a grade</option>
                   <option *ngFor="let classe of classe" [value]="classe.id">{{ classe.libelle }}</option>
                   <!-- Add more class options as needed -->
                 </select>

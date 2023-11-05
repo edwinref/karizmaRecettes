@@ -15,7 +15,7 @@ export class SidebarComponent implements OnInit{
   {
     link: "/home",
     title: "Home",
-    icon: "fas fa-home"
+    icon: "../assets/img/icons/icons8-home-64.png"
   },
   /*{
     link: "/emploitemps",
@@ -25,33 +25,33 @@ export class SidebarComponent implements OnInit{
     {
       link: "/salles",
       title: "Salles",
-      icon: "fas fa-school"
+      icon: "../assets/img/icons/icons8-classroom-50.png"
     } ,
     {
       link: "/filieres",
       title: "Filières",
-      icon: "fas fa-user-graduate"
+      icon: "../assets/img/icons/icons8-descending-sorting-50.png"
     },
 
     {
       link: "/profs",
       title: "Professeurs",
-      icon: "fas fa-chalkboard-teacher"
+      icon: "../assets/img/icons/icons8-teacher-50.png"
     },
     {
       link: "/etudiant",
       title: "Etudiants",
-      icon: "fas fa-book-reader"
+      icon: "../assets/img/icons/icons8-student-50.png"
     },
   {
     link: "/classes",
     title: "Classes",
-    icon: "fas fa-graduation-cap"
+    icon: "../assets/img/icons/icons8-level-50.png"
   },
     {
       link: "/coursmodules",
       title: "Cours Model",
-      icon: "fas fa-book-open"
+      icon: "../assets/img/icons/icons8-study-48.png"
     },
 
 
@@ -98,8 +98,10 @@ sidebarProfItems = [
   constructor(private cookieService: CookieService) { }
 
   handleChangeBars(index: number): void {
-  this.active = index;
-}
+    this.active = index;
+  }
+
+
   ngOnInit(): void {
 
     if(this.cookieService.get('role') == "Administrateur"){

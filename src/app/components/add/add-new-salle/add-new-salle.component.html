@@ -1,7 +1,7 @@
 <app-page-header
   [link]="'salles'"
-  [prev]="'Salles'"
-  [current]="'Ajouter une salles'"
+  [prev]="'Rooms'"
+  [current]="'Add Room'"
 ></app-page-header>
 
 <div class="row">
@@ -15,7 +15,7 @@
           <div class="row">
             <div class="col-12">
               <h5 class="form-title student-info">
-                Informations sur la Salle<span
+                Room Informations<span
                   ><a href="javascript:;"
                     ><i class="feather-more-vertical"></i></a
                 ></span>
@@ -34,7 +34,7 @@
             </div>
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
-                <label>numéro <span class="login-danger">*</span></label>
+                <label>Number <span class="login-danger">*</span></label>
                 <input
                   class="form-control"
                   formControlName="numSalle"
@@ -44,7 +44,7 @@
             </div>
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
-                <label>capacité <span class="login-danger">*</span></label>
+                <label>Capacity <span class="login-danger">*</span></label>
                 <input
                   class="form-control"
                   formControlName="capacite"
@@ -70,6 +70,31 @@
               <div class="student-submit">
                 <button type="submit" class="btn btn-primary">Confirmer</button>
               </div>
+            </div>
+          </div>
+          <div>
+            <hr class="mt-4" />
+            <div class="col-12 col-sm-12">
+              <div class="form-group students-up-files">
+                <label>
+                  You can also upload a list of students (xlsx)
+                </label>
+                <div class="uplod">
+                  <label >
+                    View example of file
+                    <button (click)="downloadXSL()" class="green-button">Download XSL File</button>
+
+                  </label>
+                </div>
+
+                <div class="uplod">
+                  <label class="file-upload image-upbtn mb-0">
+                    Upload a file
+                    <input type="file" id="fileInput" (change)="handleFileInput($event)" />
+                  </label>
+                </div>
+              </div>
+
             </div>
           </div>
         </form>

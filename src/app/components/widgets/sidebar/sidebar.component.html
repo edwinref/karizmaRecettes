@@ -1,9 +1,11 @@
-<div class="sidebar" id="sidebar">
+<div class="sidebar invisible-background" id="sidebar">
+  <img src="../assets/img/logo.png" alt="Your Image" class="sidebar-image">
+
   <div class="sidebar-inner slimscroll">
     <div id="sidebar-menu" class="sidebar-menu">
       <ul>
         <li class="menu-title">
-          <span> Menu principal </span>
+          <span> Menu</span>
         </li>
         <li
           class="submenu"
@@ -12,11 +14,13 @@
           [ngClass]="active == i ? 'active' : ''"
         >
           <a [routerLink]="item.link">
-            <i [class]="item.icon"></i>
-            <span>{{ item.title }}</span>
+            <img [src]="item.icon" alt="Custom Icon" width="20" height="20">
+            <span [ngClass]="active == i ? 'active-text' : ''">{{ item.title }}</span>
             <span class="menu-arrow"></span>
           </a>
         </li>
+
+
       </ul>
     </div>
   </div>

@@ -3,20 +3,20 @@
     <div class="container">
       <div class="loginbox">
         <div class="login-left"  style="    background-color: #f7f7fa;">
-          <img class="img-fluid" src="/assets/img/hero-img.png" alt="Logo" />
+          <img class="img-fluid" src="/assets/img/login.png" alt="Logo"style="width: 600px; height: 500px;" />
         </div>
         <div class="login-right">
           <div class="login-right-wrap">
-            <h1>Bienvenue à l'ENSAJ</h1>
+            <h1>Welcome</h1>
             <p class="account-subtitle">
-              Accédez à votre compte pour consulter les emplois du temps.
+              Access your account to check the schedules.
             </p>
-            <h2>Connexion</h2>
+            <h2>Login</h2>
 
             <form [formGroup]="formGroup" (ngSubmit)="login()">
               <div class="form-group">
                 <label
-                  >Nom d'utilisateur <span class="login-danger">*</span></label
+                  >Username<span class="login-danger">*</span></label
                 >
                 <input
                   type="text"
@@ -30,11 +30,11 @@
                   *ngIf="username?.touched && username?.invalid"
                   class="error-message text-danger"
                 >
-                  Nom d'utilisateur requis
+                  Username required
                 </div>
               </div>
               <div class="form-group">
-                <label>Mot de passe <span class="login-danger">*</span></label>
+                <label>Password <span class="login-danger">*</span></label>
                 <input
                   type="password"
                   class="form-control pass-input"
@@ -45,7 +45,7 @@
                   *ngIf="password?.touched && password?.invalid"
                   class="error-message text-danger"
                 >
-                  Mot de passe requis
+                  Password required
                 </div>
               </div>
 
@@ -55,7 +55,7 @@
                   class="btn btn-primary btn-block"
                   [disabled]="formGroup.invalid"
                 >
-                  Connexion
+                  Login
                 </button>
               </div>
             </form>

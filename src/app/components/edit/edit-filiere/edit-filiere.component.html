@@ -1,7 +1,7 @@
 <app-page-header
   [link]="'filieres'"
-  [prev]="'filières'"
-  [current]="'Ajouter une filiere '"
+  [prev]="'Major'"
+  [current]="'Edit Major '"
 ></app-page-header>
 
 <div class="row">
@@ -12,7 +12,7 @@
           <div class="row">
             <div class="col-12">
               <h5 class="form-title student-info">
-                Informations sur le Département<span
+                Major Informations<span
               ><a href="javascript:"
               ><i class="feather-more-vertical"></i></a
               ></span>
@@ -20,7 +20,7 @@
             </div>
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
-                <label>Libellé <span class="login-danger">*</span></label>
+                <label>Label <span class="login-danger">*</span></label>
                 <input
                   class="form-control"
                   type="text"
@@ -43,7 +43,7 @@
 
               <div class="form-group local-forms">
                 <label
-                >Chef du Filiére<span class="login-danger">*</span></label
+                >Major Coordinator<span class="login-danger">*</span></label
                 >
                 <input
                   class="form-control"
@@ -53,7 +53,7 @@
               </div>
 
               <div class="form-group local-forms">
-                <label>Département<span class="login-danger">*</span></label>
+                <label>Dapartment<span class="login-danger">*</span></label>
                 <select class="form-control" formControlName="departement">
                   <option value="TRI">TRI</option>
                   <option value="STIN">STIN</option>
@@ -66,7 +66,7 @@
               class="col-12 d-flex align-items-center justify-content-center"
             >
               <div class="student-submit">
-                <button type="submit" class="btn btn-primary">Confirmer</button>
+                <button type="submit" class="btn btn-primary">Confirm</button>
               </div>
             </div>
           </div>

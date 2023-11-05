@@ -24,6 +24,7 @@
               "src/app/assets/",
               "src/favicon.ico",
               "src/assets",
+              "src/assets/DataCSV",
               "src/assets/img/*"
             ],
             "styles": [
@@ -96,7 +97,7 @@
             "styles": [
             ],
             "scripts": [
-              
+
             ]
           }
         }

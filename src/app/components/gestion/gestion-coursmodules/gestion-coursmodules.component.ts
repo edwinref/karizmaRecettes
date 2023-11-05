@@ -7,6 +7,10 @@ import { Module } from "../../../models/modules.models";
 import { ModuleService } from "../../../services/module-service.service";
 import {ProfServiceService} from "../../../services/prof-service.service";
 import {Prof} from "../../../models/prof.models";
+import {Groupe} from "../../../models/groupe.model";
+import {GroupeService} from "../../../services/groupe.service";
+import {AffectationModuleGroupeTeacher} from "../../../models/affect.model";
+import {AffectService} from "../../../services/affect.service";
 
 @Component({
   selector: 'app-gestion-module',
@@ -15,6 +19,8 @@ import {Prof} from "../../../models/prof.models";
 })
 export class GestionModuleComponent implements OnInit {
   modules: Module[] = []; // Initialiser le tableau modules
+
+  groupes:Groupe[]=[];
 
   modulles :Module[] = [];
 
@@ -31,7 +37,7 @@ export class GestionModuleComponent implements OnInit {
     private moduleService: ModuleService,
     private fb: FormBuilder,
     private router: Router,
-    private profService:ProfServiceService,private renderer: Renderer2
+    private profService:ProfServiceService,private renderer: Renderer2, private groupeservice:GroupeService,private affectservice:AffectService,
   ) {}
 
   ngOnInit(): void {
@@ -108,15 +114,17 @@ export class GestionModuleComponent implements OnInit {
   }
   affect(form: NgForm) {
     // You can also access the form object if needed
-console.log(form.value)
-    let module:Module = form.value.module;
-    module.enseignant = form.value.prof;
-    console.log(module)
-    this.moduleService.createModule(module, module.classe.id).subscribe(data =>{
+    let affect:AffectationModuleGroupeTeacher = new AffectationModuleGroupeTeacher();
+    affect.enseignant = form.value.prof;
+    affect.module = form.value.module;
+    affect.groupe = form.value.groupe;
+    console.log(affect)
+    this.affectservice.saveAffect(affect).subscribe(data =>{
       console.log(data)
-      Swal.fire('Success', 'Module Affected avec succès', 'success');
+      Swal.fire('Success', 'Module Affected successfuly', 'success');
         const buttonElement = this.close.nativeElement as HTMLButtonElement;
         buttonElement.click();
+        form.reset();
 
     },
       err => {
@@ -128,11 +136,26 @@ console.log(form.value)
       }
         const buttonElement = this.close.nativeElement as HTMLButtonElement;
         buttonElement.click();
+        form.reset()
     }
     )
   }
   hideModal() {
     const modal = this.renderer.selectRootElement('#exampleModal');
     this.renderer.setProperty(modal, 'hidden', true);
+  }
+  selectedModule: any | null = null;
+
+  getGroupes(){
+    console.log(this.selectedModule.id)
+    if(this.selectedModule.id !=null){
+      this.groupeservice.getByModule(this.selectedModule.id).subscribe(data =>{
+        this.groupes = data;
+        console.log(this.groupes)
+      },error => {
+        console.log(error)
+      })
+    }
+
   }
 }

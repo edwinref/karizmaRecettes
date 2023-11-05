@@ -63,10 +63,21 @@
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
                 <label>Classe <span class="login-danger">*</span></label>
-                <select class="form-control select" formControlName="classe">
+                <select class="form-control select" formControlName="classe" (change)="getGroupesByClasse()" [(ngModel)]="selectedClasseId">
                   <option value="" disabled selected>Choisir une classe</option>
                   <option *ngFor="let classe of classe" [value]="classe.id">{{ classe.libelle }}</option>
                   <!-- Add more class options as needed -->
+                </select>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-4" *ngIf="selectedClasseId != null && groupes.length > 0">
+              <div class="form-group local-forms">
+                <label>Groupe</label>
+                <select class="form-control select" formControlName="groupe">
+                  <option value="" disabled selected>Choose a groupe of this classe</option>
+                  <option *ngFor="let groupe of groupes" [value]="groupe.id">{{ groupe.libelle }}</option>
+                  <!-- Add more group options as needed -->
                 </select>
               </div>
             </div>

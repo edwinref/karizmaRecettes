@@ -154,15 +154,21 @@
       <form #form="ngForm" (ngSubmit)="affect(form)">
       <div class="modal-body">
         modules:
-        <select class="form-control select" ngModel name = "module">
+        <select class="form-control select" ngModel name = "module" (change)="getGroupes()" [(ngModel)]="selectedModule">
           <option value="" disabled selected>Choisir un module</option>
-          <option *ngFor="let module of modulles" [ngValue]="module">{{ module.libelle }}</option>
+          <option *ngFor="let module of modules" [ngValue]="module">{{ module.libelle }}</option>
           <!-- Add more class options as needed -->
         </select>
-        enseignants:
+        teacher:
         <select class="form-control select" ngModel name = "prof">
           <option value="" disabled selected>Choisir un proffesseur</option>
           <option *ngFor="let prof of profs" [ngValue]="prof">{{ prof.nom  }} {{prof.prenom}}</option>
+          <!-- Add more class options as needed -->
+        </select>
+        group:
+        <select class="form-control select" ngModel name = "groupe">
+          <option value="" disabled selected>Choisir un groupe</option>
+          <option *ngFor="let groupe of groupes" [ngValue]="groupe">{{ groupe.libelle}}</option>
           <!-- Add more class options as needed -->
         </select>
       </div>

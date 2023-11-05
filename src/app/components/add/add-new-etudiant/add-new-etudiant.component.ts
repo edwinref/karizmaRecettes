@@ -9,6 +9,9 @@ import {EtudiantService} from "../../../services/etudiant.service";
 import {Classe} from "../../../models/classes.models";
 import {ClasseService} from "../../../services/classe.service";
 import * as XLSX from 'xlsx';
+import {Groupe} from "../../../models/groupe.model";
+import {GroupeService} from "../../../services/groupe.service";
+import {error} from "@angular/compiler-cli/src/transformers/util";
 interface CSVData {
   id?: number; // Define the structure of each object
 
@@ -36,7 +39,12 @@ export class AddNewEtudiantComponent {
   newProfFormGroup!: FormGroup;
   classe: Classe[] = [];
 
-  constructor(private fb: FormBuilder,private profService : EtudiantService, private router:Router,    private classeService: ClasseService,
+  groupes:Groupe[]=[];
+
+
+  selectedClasseId: number | null = null; // Initialize it as null
+
+  constructor(private fb: FormBuilder,private profService : EtudiantService, private router:Router,    private classeService: ClasseService,private groupeService:GroupeService
   ) {}
 
   ngOnInit(): void {
@@ -48,6 +56,7 @@ export class AddNewEtudiantComponent {
       tel: this.fb.control(null, [Validators.required]),
       email: this.fb.control(null, [Validators.required, Validators.email]),
       classe: this.fb.control(null, [Validators.required]),
+      groupe: this.fb.control(null),
       login: this.fb.control(null, [Validators.required]),
       password: this.fb.control(null, [Validators.required]),
       civilite: this.fb.control(null, [Validators.required])
@@ -81,28 +90,39 @@ export class AddNewEtudiantComponent {
   handleAddEtudiant() {
     if (this.newProfFormGroup.valid) {
       const newEtudiant: Etudiant = this.newProfFormGroup.value;
-      const selectedClasseId: number = +newEtudiant.classe; // Use a type assertion if necessary
+      const selectedClasseId: number = +newEtudiant.classe;
+      const selectedGroupeId: number | undefined = +newEtudiant.groupe;
 
-      const classeId = this.classe.find(classe => classe.id === selectedClasseId);
+      console.log(this.newProfFormGroup.value);
+
+      const classeId = this.classe.find((classe) => classe.id === selectedClasseId);
+
       if (classeId) {
         newEtudiant.classe = classeId; // Create a Classe object with the selected ID
+
+        if (selectedGroupeId !== undefined) {
+          const groupeID = this.groupes.find((groupe) => groupe.id === selectedGroupeId);
+          if (groupeID) {
+            newEtudiant.groupe = groupeID;
+          }
+        }
+
         console.log("class" + classeId.id);
         this.profService.saveEtudiant(newEtudiant, classeId.id).subscribe({
-
-          next: data => {
-            console.log('dataaa ')
-            console.log(newEtudiant)
+          next: (data) => {
+            console.log('dataaa ');
+            console.log(newEtudiant);
             Swal.fire('Success', 'Etudiant ajouté avec succès', 'success');
             this.router.navigateByUrl('/etudiant');
           },
-          error: err => {
+          error: (err) => {
             console.error(err);
             if (err.error && err.error.message) {
               Swal.fire('Error', err.error.message, 'error');
             } else {
               Swal.fire('Error', 'Une erreur s est produite lors de l ajout de l étudiant', 'error');
             }
-          }
+          },
         });
       } else {
         Swal.fire('Error', 'Veuillez sélectionner une classe avant d ajouter l étudiant', 'error');
@@ -111,6 +131,7 @@ export class AddNewEtudiantComponent {
       Swal.fire('Error', 'Veuillez remplir correctement tous les champs du formulaire', 'error');
     }
   }
+
   handleFileInput(event: any) {
     const file = event.target.files[0];
 
@@ -152,7 +173,6 @@ export class AddNewEtudiantComponent {
       const newEtudiant: {
         classeId: number; // Add a property for classeId
         password: string;
-
         tel: string;
         cne: string;
         login: string;
@@ -190,5 +210,14 @@ export class AddNewEtudiantComponent {
   }
 
 
-
+  getGroupesByClasse() {
+    if (this.selectedClasseId != null) {
+      this.groupeService.getByClasse(this.selectedClasseId).subscribe(data =>{
+        this.groupes = data;
+        console.log(this.groupes)
+      },error =>{
+        console.log(error)
+      })
+    }
+  }
 }

@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Classe } from '../../../models/classes.models';
 import { ClasseService } from '../../../services/classe.service';
 import { Filiere } from '../../../models/filieres.models';
 import { FiliereService } from '../../../services/filiere.service';
 import {Departement} from "../../../models/departement.models";
+import {Groupe} from "../../../models/groupe.model";
+import {GroupeService} from "../../../services/groupe.service";
 
 @Component({
   selector: 'app-add-new-classe',
@@ -15,11 +17,14 @@ import {Departement} from "../../../models/departement.models";
 export class AddNewClasseComponent implements OnInit {
   newClassFormGroup!: FormGroup;
   filieres: Filiere[] = [];
+  classe!:Classe;
+  @ViewChild('close', { static: true }) close!: ElementRef;
 
   constructor(
     private fb: FormBuilder,
     private clService: ClasseService,
-    private filiereService: FiliereService
+    private filiereService: FiliereService,
+    private groupeService:GroupeService
   ) {}
 
   ngOnInit(): void {
@@ -60,6 +65,7 @@ export class AddNewClasseComponent implements OnInit {
   handleAddClasse() {
     if (this.newClassFormGroup.valid) {
       const newClasse: Classe = this.newClassFormGroup.value;
+      this.classe = this.newClassFormGroup.value;
 
       // Find the selected filière object based on the selected ID
       const selectedFiliereId: number = +newClasse.filiere; // Use a type assertion if necessary
@@ -110,7 +116,38 @@ export class AddNewClasseComponent implements OnInit {
     }
   }
 
+  groupes:Groupe[]=[];
 
+  addGroupes() {
+    if(this.groupes.length !=0){
+      console.log(this.groupes)
+      this.groupes.forEach(obj =>{
+        this.groupeService.saveGroupe(obj).subscribe(data =>{
+          console.log(obj)
+        },error => {
+          Swal.fire('error', 'groupe not added correctly', 'error');
+          const buttonElement = this.close.nativeElement as HTMLButtonElement;
+          buttonElement.click();
+        })
+      })
+      Swal.fire('Success', 'groups added successfuly', 'success');
+      const buttonElement = this.close.nativeElement as HTMLButtonElement;
+      buttonElement.click();
+      this.groupes = []
+    }
+  }
 
+  addGroup(groupe: NgForm) {
+    let groupefrom = groupe.value;
+    let groupeee = new Groupe();
+    groupeee.libelle = groupefrom.libelle;
+    groupeee.classe= this.classe;
+    this.groupes.push(groupeee);
+    groupe.reset();
+  }
+  supprimerGroupe(groupe: Groupe) {
+    let index = this.groupes.indexOf(groupe)
+    this.groupes.splice(index, 1);
+  }
 
 }

@@ -40,39 +40,23 @@
         >
           <thead class="student-thread">
           <tr>
-            <th>
-              <div class="form-check check-tables">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="something"
-                />
-              </div>
-            </th>
             <th>CNE</th>
-            <th>Prénom</th>
-            <th>Nom</th>
+            <th>First Name</th>
+            <th>Family Name</th>
             <th>Email</th>
-            <th>classe</th>
+            <th>Grade</th>
+            <th>Grp</th>
             <th>Actions</th>
           </tr>
           </thead>
           <tbody>
           <tr *ngFor="let etud of etuds">
-            <td>
-              <div class="form-check check-tables">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="something"
-                />
-              </div>
-            </td>
             <td>{{ etud.cne }}</td>
             <td>{{ etud.prenom }}</td>
             <td>{{ etud.nom }}</td>
             <td>{{ etud.email }}</td>
             <td>{{ etud.classe.libelle }}</td>
+            <td>grp</td>
             <td class="text-end">
               <div class="actions">
                 <button data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="handleCritereEtud(etud)"

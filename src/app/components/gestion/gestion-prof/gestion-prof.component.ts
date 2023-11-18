@@ -38,8 +38,8 @@ export class GestionProfComponent implements OnInit {
       keyword: this.fb.control('')
     });
     this.handleSearchCustomers();
-    
-  } 
+
+  }
 
   handleEditeProf(profedit: Prof) {
     this.router.navigateByUrl('/profs/edit',{state :profedit});
@@ -47,7 +47,7 @@ export class GestionProfComponent implements OnInit {
     handleChangeSize($event: Event) {
       this.size = parseInt((<HTMLInputElement>$event.target).value);
       this.handleSearchCustomers();
-    }  
+    }
 
   handleSearchCustomers() {
     const kw = this.searchFormGroup?.value.keyword;
@@ -73,13 +73,13 @@ export class GestionProfComponent implements OnInit {
 
   handleDeleteProf(prof: Prof) {
   Swal.fire({
-    title: 'Vous etes sur?',
-    text: "Vous ne pourrez pas revenir en arrière!",
+    title: 'Are you sure?',
+    text: "You will not retrieve this data!",
     icon: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#3085d6',
     cancelButtonColor: '#d33',
-    confirmButtonText: 'Oui, supprimez-le!'
+    confirmButtonText: 'Yes, Delete !'
   }).then((result) => {
     if (result.isConfirmed) {
       this.profService.deleteProf(prof.id).subscribe();;

@@ -59,13 +59,13 @@ export class GestionClasseComponent implements OnInit {
 
   handleDeleteClasse(classe: Classe): void {
     Swal.fire({
-      title: 'Êtes-vous sûr ?',
-      text: "Vous ne pourrez pas revenir en arrière !",
+      title: 'Are you sure?',
+      text: "You will not retrieve this data!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Oui, supprimez-le !'
+      confirmButtonText: 'Yes, Delete !'
     }).then((result) => {
       if (result.isConfirmed) {
         this.classeService.deleteClasse(classe.id).subscribe();

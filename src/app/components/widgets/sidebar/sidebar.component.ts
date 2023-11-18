@@ -62,17 +62,17 @@ sidebarProfItems = [
   {
     link: "/home",
     title: "Home",
-    icon: "fas fa-home"
+    icon: "../assets/img/icons/icons8-home-64.png"
   },
   {
     link: "/emploitemps",
     title: "Emploi du temps",
-    icon: "fas fa-clipboard-list"
+    icon: "../assets/img/icons/icons8-teacher-50.png"
   },
   {
     link: "/nonDesponibles",
     title: "Constraintes",
-    icon: "fas fa-clipboard-list"
+    icon: "../assets/img/icons/icons8-teacher-50.png"
   },
 
 ]
@@ -81,17 +81,17 @@ sidebarProfItems = [
     {
       link: "/home",
       title: "Home",
-      icon: "fas fa-home"
+      icon: "../assets/img/icons/icons8-home-64.png"
     },
     {
       link: "/emploitemps",
       title: "Emploi du temps",
-      icon: "fas fa-clipboard-list"
+      icon: "../assets/img/icons/icons8-teacher-50.png"
     },
     {
       link: "/crit/add",
       title: "Constraintes",
-      icon: "fas fa-clipboard-list"
+      icon: "../assets/img/icons/icons8-student-50.png"
     },
 
   ]

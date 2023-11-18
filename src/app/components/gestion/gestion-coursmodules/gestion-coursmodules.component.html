@@ -63,6 +63,8 @@
             <thead class="student-thread">
             <tr>
               <th>Module Name</th>
+              <th>Major (Filiere)</th>
+              <th>Level (Class)</th>
               <th>Onsite Hours</th>
               <th>Remote Hours</th>
               <th>TD Count</th>
@@ -70,13 +72,16 @@
               <th>Evaluation Count</th>
               <th>Separated</th>
               <th>Mutual</th>
-              <th>Class</th>
+
               <th class="text-end">Action</th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let module of modules">
               <td>{{ module.libelle }}</td>
+              <td style="color: red;">Hna filiere</td>
+              <td>{{ module.classe.libelle }}</td>
+              <td style="color: red;">Hna Semestre</td>
               <td>{{ module.volumeHoraireOnsite }}h</td>
               <td>{{ module.volumeHoraireOnRemote }}h</td>
               <td>{{ module.nbrTD }}</td>
@@ -84,7 +89,7 @@
               <td>{{ module.nbrEvaluation }}</td>
               <td>{{ module.isSeperated ? 'Yes' : 'No' }}</td>
               <td>{{ module.isMetuale ? 'Yes' : 'No' }}</td>
-              <td>{{ module.classe.libelle }}</td>
+
               <td class="text-end">
                 <div class="actions">
                   <button (click)="handleEditModule(module)" class="btn btn-sm bg-success-light me-2">

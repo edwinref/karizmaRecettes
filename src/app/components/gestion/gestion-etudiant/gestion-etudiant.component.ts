@@ -76,13 +76,13 @@ export class GestionEtudiantComponent {
 
   handleDeleteEtud(etud: Etudiant) {
     Swal.fire({
-      title: 'Vous etes sur?',
-      text: "Vous ne pourrez pas revenir en arrière!",
+      title: 'Are you sure?',
+      text: "You will not retrieve this data!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Oui, supprimez-le!'
+      confirmButtonText: 'Yes, Delete !'
     }).then((result) => {
       if (result.isConfirmed) {
         this.etudiantService.deleteEud(etud.id).subscribe();

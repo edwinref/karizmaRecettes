@@ -42,13 +42,13 @@ export class GestionSallesComponent implements OnInit {
 
   handleDeleteSalle(salle: Salle) {
     Swal.fire({
-      title: 'Êtes-vous sûr(e) ?',
-      text: "Cette action est irréversible !",
+      title: 'Are you sure?',
+      text: "You will not retrieve this data!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Oui, supprimez-la !'
+      confirmButtonText: 'Yes, Delete !'
     }).then((result) => {
       if (result.isConfirmed) {
         this.salleService.deleteSalle(salle.id).subscribe();;
@@ -64,7 +64,7 @@ export class GestionSallesComponent implements OnInit {
 
   handleSearchSalles() {
     const keyword = this.searchFormGroup?.value.keyword;
-    
+
     this.salleService.searchSalles(keyword, this.page, this.size).subscribe({
       next: (data) => {
         this.salles = data.content;
@@ -78,7 +78,7 @@ export class GestionSallesComponent implements OnInit {
         console.log(err);
       }
     });
-  } 
+  }
 
   setDisplayedPages() {
     this.displayedPages = [];

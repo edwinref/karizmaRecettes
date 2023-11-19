@@ -65,7 +65,7 @@
               <th>Module Name</th>
               <th>Major (Filiere)</th>
               <th>Level (Class)</th>
-              <th>Onsite Hours</th>
+              <th>Semester</th>
               <th>Remote Hours</th>
               <th>TD Count</th>
               <th>TP Count</th>
@@ -79,9 +79,9 @@
             <tbody>
             <tr *ngFor="let module of modules">
               <td>{{ module.libelle }}</td>
-              <td style="color: red;">Hna filiere</td>
+              <td>{{ module.filiere.libelle }}</td>
               <td>{{ module.classe.libelle }}</td>
-              <td style="color: red;">Hna Semestre</td>
+              <td>{{ module.semestre }}</td>
               <td>{{ module.volumeHoraireOnsite }}h</td>
               <td>{{ module.volumeHoraireOnRemote }}h</td>
               <td>{{ module.nbrTD }}</td>

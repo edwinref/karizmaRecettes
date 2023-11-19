@@ -47,8 +47,9 @@ export class NonDisponibleComponent {
     let modulee:Module;
     modulee = module;
     console.log(module)
-    this.moduleService.createModule(modulee,modulee.classe.id).subscribe(data =>{
+    this.moduleService.createModule(modulee,modulee.classe.id,module.filiere.id).subscribe(data =>{
       console.log(data)
+
       Swal.fire('Success', 'Module Affected avec succès', 'success');
       const buttonElement = this.close.nativeElement as HTMLButtonElement;
       buttonElement.click();

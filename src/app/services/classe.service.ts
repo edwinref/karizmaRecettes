@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { PageClasse } from '../models/profPage.models';
 import { Classe } from '../models/classes.models';
+import {Filiere} from "../models/filieres.models";
 
 @Injectable({
   providedIn: 'root'
@@ -44,5 +45,11 @@ export class ClasseService {
   public deleteClasse(id: number): Observable<any>{
     return this.http.delete(environment.backendHost+"/classes/"+id);
   }
-
+  public getClassesByFiliere(filiereId: number): Observable<Classe[]> {
+    return this.http.get<Classe[]>(`${environment.backendHost}/classes/filere/${filiereId}`);
+  }
+  public getSemesterByFiliere(filiereId: number): Observable<Filiere[]> {
+    return this.http.get<Filiere[]>(`${environment.backendHost}/classes/filere/${filiereId}`);
+  }
 }
+

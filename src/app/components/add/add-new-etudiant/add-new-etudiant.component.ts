@@ -12,6 +12,8 @@ import * as XLSX from 'xlsx';
 import {Groupe} from "../../../models/groupe.model";
 import {GroupeService} from "../../../services/groupe.service";
 import {error} from "@angular/compiler-cli/src/transformers/util";
+import {FiliereService} from "../../../services/filiere.service";
+import {Filiere} from "../../../models/filieres.models";
 interface CSVData {
   id?: number; // Define the structure of each object
 
@@ -40,7 +42,7 @@ export class AddNewEtudiantComponent {
   classe: Classe[] = [];
 
   groupes:Groupe[]=[];
-
+  semesters: any[] = [];
 
   selectedClasseId: number | null = null; // Initialize it as null
 
@@ -87,6 +89,7 @@ export class AddNewEtudiantComponent {
       }
     );
   }
+
   downloadXSL() {
     const xslFilePath = 'assets/DataCSV/Etudiants.xlsx';
     fetch(xslFilePath)

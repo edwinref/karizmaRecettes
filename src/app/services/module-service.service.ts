@@ -32,13 +32,17 @@ export class ModuleService  {
   }
 
   // Create a new module
-  public createModule(module: Module, classeId: number): Observable<Module> {
-    return this.http.post<Module>(`${environment.backendHost}/modules?classeId=${classeId}`, module);
+  public createModule(module: Module, classeId: number, filiereId: number): Observable<Module> {
+    return this.http.post<Module>(
+      `${environment.backendHost}/modules?classeId=${classeId}&filiereId=${filiereId}`,
+      module
+    );
   }
 
+
   // Update an existing module by ID
-  updateModule(id: number, module: Module, classeId: number): Observable<Module> {
-    return this.http.put<Module>(`${environment.backendHost}/modules/${id}?classeId=${classeId}`, module);
+  updateModule(id: number, module: Module, classeId: number, filiereId: number): Observable<Module> {
+    return this.http.put<Module>(`${environment.backendHost}/modules/${id}?classeId=${classeId}&filiereId=${filiereId}`, module);
   }
 
 

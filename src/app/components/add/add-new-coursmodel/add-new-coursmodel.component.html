@@ -24,7 +24,7 @@
                 <input
                   class="form-control"
                   type="text"
-                  formControlName="libel"
+                  formControlName="libelle"
                 />
               </div>
             </div>
@@ -86,38 +86,38 @@
             </div>
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
-                <label style="color: red;">Filiere hna fin tzidha <span class="login-danger">*</span></label>
+                <label>Major<span class="login-danger">*</span></label>
+                <select class="form-control select" formControlName="filiere" (change)="getClassesByFiliere(); getSemestreByFiliere()" [(ngModel)]="selectedFiliereId">
+                  <option value="" disabled selected>Choose a Major</option>
+                  <option *ngFor="let filieres of filiere" [value]="filieres.id">{{ filieres.libelle }}</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-4" >
+              <div class="form-group local-forms">
+                <label>Grad</label>
                 <select class="form-control select" formControlName="classe">
-                  <option value="" disabled selected>Chose a grade</option>
-                  <option value="" disabled selected>Chose a grade</option>
-                  <option value="" disabled selected>Chose a grade</option>
-                  <!-- Add more class options as needed -->
+                  <option value="" disabled selected>Choose a Grad of this Major</option>
+                  <option *ngFor="let groupe of classe" [value]="groupe.id">{{ groupe.libelle }}</option>
                 </select>
               </div>
             </div>
 
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
-                <label style="color: red;">Semestre = 2 * count (classes) <span class="login-danger">*</span></label>
-                <select class="form-control select" formControlName="classe">
-                  <option value="" disabled selected>Chose a grade</option>
-                  <option value="" disabled selected>Chose a grade</option>
-                  <option value="" disabled selected>Chose a grade</option>
-                  <!-- Add more class options as needed -->
+                <label>Semestre </label>
+                <select class="form-control select" formControlName="semestre">
+                  <option value="" disabled selected>Choose a semester</option>
+                  <option *ngFor="let semester of semesters" [value]="semester">
+                    {{ semester }}
+                  </option>
                 </select>
               </div>
             </div>
-            <!-- Assuming you have a form control for selecting a Classe -->
-            <div class="col-12 col-sm-4">
-              <div class="form-group local-forms">
-                <label>Grade (Classe) <span class="login-danger">*</span></label>
-                <select class="form-control select" formControlName="classe">
-                  <option value="" disabled selected>Chose a grade</option>
-                  <option *ngFor="let classe of classe" [value]="classe.id">{{ classe.libelle }}</option>
-                  <!-- Add more class options as needed -->
-                </select>
-              </div>
-            </div>
+
+
+
 
             <div class="col-12 d-flex align-items-center justify-content-center">
               <div class="student-submit">

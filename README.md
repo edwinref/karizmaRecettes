@@ -1,29 +1,28 @@
-# KARIZMA
+# Karizma Recettes Frontend
 
-Short description or tagline of your project.
+## Description
 
+This is the frontend component of the Karizma Recettes application. It provides a user-friendly interface for viewing, adding, modifying, and deleting recipes.
 
 ## Getting Started
 
 ### Prerequisites
 
-Make sure you have the following software installed:
-
-- [Node.js](https://nodejs.org/)
-- [npm](https://www.npmjs.com/) (comes with Node.js)
+- Node.js (https://nodejs.org/)
+- npm (comes with Node.js)
 
 ### Installation
 
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/your-project.git
+    git clone https://github.com/your-username/karizmaRecettesFrontend.git
     ```
 
 2. Navigate to the project directory:
 
     ```bash
-    cd your-project
+    cd karizmaRecettes
     ```
 
 3. Install dependencies:
@@ -32,23 +31,20 @@ Make sure you have the following software installed:
     npm install
     ```
 
-## Development
+4. Run the development server:
 
-### Development Server
+    ```bash
+    ng serve
+    ```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The frontend will be accessible at `http://localhost:4200`.
 
-### Code Scaffolding
+## Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
-
-## Build and Deployment
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Usage
-
-Explain how to use your application or library.
+- **User Interface:** Creates a simple and intuitive user interface for visualizing, adding, modifying, and deleting recipes.
+- **Authentication:** Implements a login screen to access recipes.
+- **Interactive Features:** Allows users to search for recipes by ingredients, name, or preparation duration.
+- **Responsive Design:** Ensures the application is usable on various devices (desktops, tablets, smartphones).
 
 ## Contributing
 
@@ -60,4 +56,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Acknowledgements
 
-Mention any third-party libraries, tutorials, or resources you used or were inspired by in this section.
+Mention any third-party libraries, tutorials, or resources used or inspired by in this section.

@@ -2,19 +2,6 @@
 
 Short description or tagline of your project.
 
-## Table of Contents
-
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Development](#development)
-  - [Development Server](#development-server)
-  - [Code Scaffolding](#code-scaffolding)
-- [Build and Deployment](#build-and-deployment)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-- [Acknowledgements](#acknowledgements)
 
 ## Getting Started
 
